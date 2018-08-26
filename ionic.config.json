@@ -1,0 +1,7 @@
+{
+  "name": "Frases",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

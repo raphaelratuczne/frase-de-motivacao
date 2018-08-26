@@ -1,0 +1,20 @@
+page-home {
+
+  ion-content {
+    background-size: cover;
+    background-image: url('../assets/imgs/amor-em-estampa-1.jpeg');
+  }
+
+  ion-card {
+    margin-top: 66px !important;
+  }
+
+  ion-item {
+    background-color: transparent !important;
+    
+    .item-inner {
+      border-bottom: none !important;
+    }
+  }
+
+}
