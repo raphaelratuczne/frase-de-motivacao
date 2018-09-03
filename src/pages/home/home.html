@@ -22,6 +22,13 @@
     </ion-card-content>
   </ion-card>
 
+  <div *ngIf="afAuth.user | async as user; else showLogin">
+    <h2>Olá {{ user.displayName }}</h2>
+    <button ion-button (click)="logout()">logout</button>
+  </div>
+  <ng-template #showLogin>
+    <button ion-button (click)="login()">Login with Google</button>
+  </ng-template>
   <ion-item>
     <button ion-button item-end (click)="comecar()">Comece aqui</button>
   </ion-item>

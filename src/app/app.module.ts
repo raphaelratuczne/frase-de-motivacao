@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { AngularFireModule } from 'angularfire2';
+
+import { configFireBase } from '../const';
 
 import { MyApp } from './app.component';
 
@@ -12,6 +15,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(configFireBase)
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp],
