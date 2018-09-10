@@ -1,0 +1,21 @@
+
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>modal-calendario</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content padding>
+  <p>modal calendario</p>
+
+  <ion-calendar [(ngModel)]="date"
+                (onChange)="onChange($event)"
+                [type]="type"
+                [format]="'YYYY-MM-DD'">
+  </ion-calendar>  
+
+  <button type="button" name="button" (click)="fechar()">fechar</button>
+</ion-content>
