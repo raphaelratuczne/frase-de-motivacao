@@ -13,17 +13,10 @@
 </ion-header>
 
 <ion-content padding>
-  <!-- <h3>Ionic Menu Starter</h3> -->
 
-  <!-- <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button> -->
-
-  <ion-card>
+  <ion-card *ngIf="dia">
     <ion-card-content>
-      {{ frase }}
+      {{ dia.frase }}
     </ion-card-content>
   </ion-card>
 
@@ -37,6 +30,5 @@
   <ion-item>
     <button ion-button item-end (click)="comecar()">Comece aqui</button>
   </ion-item>
-  <button ion-button item-end (click)="getFrase()">frase</button>
 
 </ion-content>

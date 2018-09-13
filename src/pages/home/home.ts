@@ -1,21 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase';
+import { Subject } from 'rxjs';
+import { takeUntil, first } from 'rxjs/Operators';
+import 'rxjs/add/observable/of';
 
 import { DiaProvider } from '../../providers/dia.provider';
 import { FraseProvider } from '../../providers/frase.provider';
+
+// import { FraseId } from '../../models/frase';
+import { Dia } from '../../models/dia';
 
 @IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnDestroy {
 
-  public frase = '';
-  private user;
+  public dia:Dia;
 
   constructor(
     public navCtrl: NavController,
@@ -26,7 +31,24 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getFrase();
+    const d$ = new Subject();
+    this.diaProvider.getDocDadosDia().pipe(takeUntil(d$)).subscribe(async dia => {
+      if (dia) {
+        this.dia = dia;
+        if (!dia.frase) {
+          // carrega lista de frasesIndex
+          const indexFrasesUsadas = await this.diaProvider.getListaIndexFrasesRegistrados();
+          this.setFraseDoDia(indexFrasesUsadas);
+        } else {
+          d$.next();
+          d$.complete();
+        }
+      }
+    });
+  }
+
+  ngOnDestroy() {
+
   }
 
   comecar() {
@@ -41,9 +63,9 @@ export class HomePage implements OnInit {
     this.afAuth.auth.signOut();
   }
 
-  public getFrase() {
-    this.fraseProvider.getFrase().subscribe(frase => {
-      this.frase = frase.frase;
+  public setFraseDoDia(excluidos:number[]) {
+    this.fraseProvider.getFrase(excluidos).pipe(first()).subscribe(frase => {
+      this.diaProvider.setFraseDoDia(frase);
     });
   }
 

@@ -22,3 +22,7 @@ export class Dia {
     return JSON.parse(JSON.stringify(this));
   }
 }
+
+export class DiaIndexFrase {
+  [dia:string] : number;
+}
