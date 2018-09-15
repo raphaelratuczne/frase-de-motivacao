@@ -47,7 +47,7 @@ export class DiaProvider {
   public async updateDocDadosDia(dia:Dia) {
     if (!this.dadosDoc) await this.carregarDadosDia(this.hoje);
 
-    this.dadosDoc.update(dia);
+    return this.dadosDoc.update(dia);
   }
 
   public async carregarDadosDia(dia:string) {

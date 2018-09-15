@@ -13,32 +13,35 @@
     <h2>{{ getText() }}</h2>
   </div>
 
-  <ion-list inset>
 
-    <ion-item>
-      <ion-label>1 -</ion-label>
-      <ion-input type="text" maxlength="100" autofocus></ion-input>
-    </ion-item>
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="salvar()">
+    <ion-list inset>
 
-    <ion-item>
-      <ion-label>2 -</ion-label>
-      <ion-input type="text" maxlength="100"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label>1 -</ion-label>
+        <ion-input formControlName="palavra1" type="text" maxlength="100" autofocus></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>3 -</ion-label>
-      <ion-input type="text" maxlength="100"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label>2 -</ion-label>
+        <ion-input formControlName="palavra2" type="text" maxlength="100"></ion-input>
+      </ion-item>
 
-  </ion-list>
+      <ion-item>
+        <ion-label>3 -</ion-label>
+        <ion-input formControlName="palavra3" type="text" maxlength="100"></ion-input>
+      </ion-item>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col col-3></ion-col>
-      <ion-col col-6><button ion-button block (click)="salvar()">Salvar</button></ion-col>
-      <ion-col col-3></ion-col>
-    </ion-row>
-  </ion-grid>
+    </ion-list>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-3></ion-col>
+        <ion-col col-6><button type="submit" ion-button block>Salvar</button></ion-col>
+        <ion-col col-3></ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 
 
 </ion-content>
