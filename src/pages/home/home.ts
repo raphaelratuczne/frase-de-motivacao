@@ -56,12 +56,37 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   login() {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    // this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    this.oauthSignIn(new auth.GoogleAuthProvider());
   }
 
   logout() {
     this.afAuth.auth.signOut();
   }
+
+  private oauthSignIn(provider) {
+		if (!(<any>window).cordova) {
+      console.log('caiu 111');
+			return this.afAuth.auth.signInWithPopup(provider)
+			.then(res => console.log('logouu', res));
+		} else {
+      console.log('caiu 222');
+			return this.afAuth.auth.signInWithRedirect(provider)
+			.then(() => {
+				return this.afAuth.auth.getRedirectResult().then( result => {
+					// This gives you a Google Access Token.
+					// You can use it to access the Google API.
+					// let token = result.credential.accessToken;
+					// The signed-in user info.
+					// let user = result.user;
+					console.log('logouuu2', result);
+				}).catch(function(error) {
+					// Handle Errors here.
+					alert(error.message);
+				});
+			});
+		}
+	}
 
   public setFraseDoDia(excluidos:number[]) {
     this.fraseProvider.getFrase(excluidos).pipe(first()).subscribe(frase => {

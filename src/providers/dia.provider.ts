@@ -84,7 +84,7 @@ export class DiaProvider {
     return this.usuarioDoc.valueChanges().pipe(
       first(),
       map(objDias => {
-        return objDias['dias'] || {};
+        return objDias && objDias['dias'] ? objDias.dias : {};
       })
     ).toPromise();
   }
@@ -92,10 +92,14 @@ export class DiaProvider {
   public async updateDocDias(dia:string, indexFrase: number = null) {
     if (!this.usuarioDoc) await this.carregamentoInicial().toPromise();
 
-    const objDias = await this.usuarioDoc.valueChanges().pipe(first()).toPromise();
-    if (typeof objDias['dias'] == 'undefined') objDias['dias'] = {};
-    objDias['dias'][dia] = indexFrase;
-    this.usuarioDoc.update(objDias);
+    let objDias = await this.usuarioDoc.valueChanges().pipe(first()).toPromise();
+    if (!objDias || typeof objDias['dias'] == 'undefined') {
+      objDias = { dias: { [dia]:indexFrase } };
+      this.usuarioDoc.set(objDias);
+    } else {
+      objDias.dias[dia] = indexFrase;
+      this.usuarioDoc.update(objDias);
+    }
   }
 
   public async getListaDiasRegistrados(): Promise<string[]> {

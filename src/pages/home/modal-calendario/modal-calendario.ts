@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, /*NavController,*/ NavParams, ViewController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -11,7 +11,7 @@ export class ModalCalendarioPage {
   date: string;
   type: 'string'; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
 
-  constructor(private navCtrl: NavController, private navParams: NavParams, private viewCtrl: ViewController) {
+  constructor(/*private navCtrl: NavController,*/ private navParams: NavParams, private viewCtrl: ViewController) {
   }
 
   ionViewDidLoad() {
