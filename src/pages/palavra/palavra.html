@@ -36,10 +36,10 @@
     <br>
     <ion-item>
       <ion-label>Usar alertas para lembrar durante o dia</ion-label>
-      <ion-checkbox color="dark" checked="true"></ion-checkbox>
+      <ion-checkbox formControlName="lembretes" color="dark"></ion-checkbox>
     </ion-item>
 
-    <ion-list radio-group>
+    <ion-list radio-group formControlName="repetir">
       <ion-list-header>
         Repetir a cada:
       </ion-list-header>
@@ -49,7 +49,7 @@
           <ion-col col-6>
             <ion-item>
               <ion-label>1 hora</ion-label>
-              <ion-radio checked="true" value="1"></ion-radio>
+              <ion-radio value="1"></ion-radio>
             </ion-item>
           </ion-col>
           <ion-col col-6>
@@ -99,5 +99,5 @@
       </ion-row>
     </ion-grid>
   </form>
-
+  
 </ion-content>
