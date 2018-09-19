@@ -1,21 +1,27 @@
 
-<!-- <ion-header>
+<ion-header>
 
   <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="fechar()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>modal-calendario</ion-title>
   </ion-navbar>
 
-</ion-header> -->
+</ion-header>
 
 
 <ion-content padding>
-  <p>modal calendario</p>
+  <!-- <p>modal calendario</p> -->
 
   <ion-calendar [(ngModel)]="date"
-                (onChange)="onChange($event)"
+                [options]="options"
+                (onSelect)="onChange($event)"
                 [type]="type"
                 [format]="'YYYY-MM-DD'">
-  </ion-calendar>  
+  </ion-calendar>
 
   <button type="button" name="button" (click)="fechar()">fechar</button>
 </ion-content>
