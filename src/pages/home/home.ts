@@ -79,10 +79,11 @@ export class HomePage implements OnInit, OnDestroy {
 
   public async abrirModalCalendario() {
     const dias = await this.diaProvider.getListaDiasRegistrados();
-    let modalCalendario = this.modalCtrl.create('ModalCalendarioPage', {dias:dias});
-    modalCalendario.onDidDismiss(data => {
-      console.log(data);
-     });
-    modalCalendario.present();
+    this.modalCtrl.create('ModalCalendarioPage', {dias:dias}).present();
+    // let modalCalendario = this.modalCtrl.create('ModalCalendarioPage', {dias:dias});
+    // modalCalendario.onDidDismiss(data => {
+    //   console.log(data);
+    //  });
+    // modalCalendario.present();
   }
 }

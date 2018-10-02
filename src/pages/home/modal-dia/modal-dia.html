@@ -6,13 +6,41 @@
         <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>modal-dia</ion-title>
+    <ion-title>Dia {{ converterDia(hoje) }}</ion-title>
   </ion-toolbar>
 
 </ion-header>
 
-
 <ion-content padding>
+
+  <dl *ngIf="dia | async as d">
+    <dt>Frse do dia</dt>
+    <dd>{{ d.frase }}</dd>
+
+    <dt>Gratidão</dt>
+    <dd>{{ d.grato1 }}</dd>
+    <dd>{{ d.grato2 }}</dd>
+    <dd>{{ d.grato3 }}</dd>
+
+    <dt>Paixões</dt>
+    <dd>{{ d.paixao1 }}</dd>
+    <dd>{{ d.paixao2 }}</dd>
+    <dd>{{ d.paixao3 }}</dd>
+
+    <dt>Planos</dt>
+    <dd>{{ d.plano1 }}</dd>
+    <dd>{{ d.plano2 }}</dd>
+    <dd>{{ d.plano3 }}</dd>
+
+    <dt>Objetivo</dt>
+    <dd>{{ d.objetivo }}</dd>
+
+    <dt>Orgulho</dt>
+    <dd>{{ d.orgulho }}</dd>
+
+    <dt>Palavra do dia</dt>
+    <dd>{{ d.palavra }}</dd>
+  </dl>
 
   <button type="button" name="button" (click)="fechar()">fechar</button>
 </ion-content>
