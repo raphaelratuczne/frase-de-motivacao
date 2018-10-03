@@ -53,4 +53,8 @@ export class RoteiroPage implements OnDestroy {
   public goPalavraPage() {
     this.navCtrl.push('PalavraPage');
   }
+
+  public goHome() {
+    this.navCtrl.setRoot('HomePage');
+  }
 }

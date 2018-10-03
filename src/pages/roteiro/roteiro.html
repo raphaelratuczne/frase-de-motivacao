@@ -1,9 +1,14 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <!-- <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button> -->
     <ion-title>Roteiro</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goHome()">
+        <ion-icon name="home"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -40,7 +45,7 @@
   <ion-grid>
     <ion-row>
       <ion-col col-3></ion-col>
-      <ion-col col-6><button ion-button block (click)="goPalavraPage()" [disabled]="desPalavra">Palavra do Dia</button></ion-col>
+      <ion-col col-6><button ion-button color="secondary" block (click)="goPalavraPage()" [disabled]="desPalavra">Palavra do Dia</button></ion-col>
       <ion-col col-3></ion-col>
     </ion-row>
   </ion-grid>

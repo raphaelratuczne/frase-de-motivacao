@@ -1,12 +1,16 @@
+
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <!-- <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button> -->
-    <ion-title>Home</ion-title>
+    <ion-title>Bem vindo</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="abrirModalCalendario()">
         <ion-icon name="calendar"></ion-icon>
+      </button>
+      <button ion-button icon-only >
+        <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -14,21 +18,22 @@
 
 <ion-content padding>
 
-  <ion-card *ngIf="dia">
-    <ion-card-content>
-      {{ dia.frase }}
-    </ion-card-content>
-  </ion-card>
-
   <div *ngIf="afAuth.user | async as user; else showLogin">
     <h2>Olá {{ user.displayName }}</h2>
-    <button ion-button (click)="logout()">logout</button>
+
+    <ion-card *ngIf="dia">
+      <ion-card-content>
+        {{ dia.frase }}
+      </ion-card-content>
+    </ion-card>
+
+    <!-- <button ion-button (click)="logout()" color="secondary">logout</button> -->
     <ion-item>
-      <button ion-button item-end (click)="comecar()">Comece aqui</button>
+      <button ion-button item-end (click)="comecar()" color="secondary">Comece aqui</button>
     </ion-item>
   </div>
   <ng-template #showLogin>
-    <button ion-button (click)="login()">Login with Google</button>
+    <button ion-button (click)="login()" color="secondary">Login with Google</button>
   </ng-template>
 
 </ion-content>

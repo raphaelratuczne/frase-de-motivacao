@@ -34,7 +34,7 @@ export class ModalCalendarioPage {
     private modalCtrl: ModalController
   ) {
     this.dias = this.navParams.get('dias');
-    console.log('dias', this.dias);
+    // console.log('dias', this.dias);
 
     // cria um Date a partir da data passada
     const setDia = dia => new Date((new Date(dia).getTime()) + (new Date().getTimezoneOffset() * 60 * 1000));
