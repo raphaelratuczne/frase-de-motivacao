@@ -13,6 +13,7 @@ import { MyApp } from './app.component';
 
 import { DiaProvider } from '../providers/dia.provider';
 import { FraseProvider } from '../providers/frase.provider';
+import { DescricaoProvider } from '../providers/descricao.provider';
 
 @NgModule({
   declarations: [MyApp],
@@ -31,7 +32,8 @@ import { FraseProvider } from '../providers/frase.provider';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: LOCALE_ID, useValue: "pt-BR" },
     DiaProvider,
-    FraseProvider
+    FraseProvider,
+    DescricaoProvider
   ]
 })
 export class AppModule {}

@@ -14,13 +14,16 @@
 
 <ion-content padding>
   <ion-card>
-    <ion-card-content>
-      Siga o roteiro abaixo:
-    </ion-card-content>
+    <!-- <ion-card-content> -->
+      <ion-item>
+        Siga o roteiro abaixo:
+        <ion-badge *ngIf="descricao?.roteiro" item-end (click)="abrirDescr()">?</ion-badge>
+      </ion-item>
+    <!-- </ion-card-content> -->
   </ion-card>
 
-  <ion-list class="lista-opcoes">
-    <button ion-item (click)="goItensPage('grato')">
+  <ion-list padding class="lista-opcoes">
+    <button ion-item (click)="goItensPage('gratidao')">
       <ion-icon name="ios-flower-outline" item-start></ion-icon>
       Gratidão
     </button>

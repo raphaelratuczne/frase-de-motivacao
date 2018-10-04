@@ -1,12 +1,14 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, AlertController } from 'ionic-angular';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { Dia } from '../../models/dia';
+import { Descricao } from '../../models/descricao';
 
 import { DiaProvider } from '../../providers/dia.provider';
+import { DescricaoProvider } from '../../providers/descricao.provider';
 
 @IonicPage()
 @Component({
@@ -21,8 +23,15 @@ export class RoteiroPage implements OnDestroy {
   public desOrgulho: boolean = true;
   public desPalavra: boolean = true;
   private d$: Subject<void>;
+  public descricao: Descricao;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private diaProvider: DiaProvider) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private diaProvider: DiaProvider,
+    private descProvider: DescricaoProvider,
+    private alertCtrl: AlertController
+  ) {
     this.d$ = new Subject();
     this.diaProvider.getDocDadosDia().pipe(takeUntil(this.d$)).subscribe((dia:Dia) => {
       // console.log('carregou dia', dia);
@@ -35,6 +44,10 @@ export class RoteiroPage implements OnDestroy {
         this.desPalavra = isEmpty(dia.orgulho) || this.desOrgulho;
       }
     });
+
+    this.descProvider.getDescricoes().then(descr => {
+      this.descricao = descr;
+    });
   }
 
   ngOnDestroy() {
@@ -43,18 +56,26 @@ export class RoteiroPage implements OnDestroy {
   }
 
   public goItensPage(pg:string) {
-    this.navCtrl.push('ItensPage', { page: pg });
+    this.navCtrl.push('ItensPage', { page: pg, descr: this.descricao[pg] });
   }
 
   public goTextoPage(pg:string) {
-    this.navCtrl.push('TextoPage', { page: pg });
+    this.navCtrl.push('TextoPage', { page: pg, descr: this.descricao[pg] });
   }
 
   public goPalavraPage() {
-    this.navCtrl.push('PalavraPage');
+    this.navCtrl.push('PalavraPage', { descr: this.descricao.palavra });
   }
 
   public goHome() {
     this.navCtrl.setRoot('HomePage');
+  }
+
+  public abrirDescr() {
+    this.alertCtrl.create({
+      title: 'Roteiro',
+      subTitle: this.descricao.roteiro,
+      buttons: ['OK']
+    }).present();
   }
 }

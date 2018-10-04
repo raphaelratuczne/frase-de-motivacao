@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
@@ -17,14 +17,18 @@ export class TextoPage {
   public page: string;
   public form: FormGroup;
   private dia: Dia;
+  public descricao: string;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    private diaProvider: DiaProvider
+    private diaProvider: DiaProvider,
+    private alertCtrl: AlertController
   ) {
     this.page = this.navParams.get('page');
+    this.descricao = this.navParams.get('descr');
+
     if (!this.page) {
       this.navCtrl.setRoot('RoteiroPage');
     }
@@ -75,5 +79,13 @@ export class TextoPage {
       }
       this.diaProvider.updateDocDadosDia(this.dia).then(() => this.navCtrl.pop());
     }
+  }
+
+  public abrirDescr() {
+    this.alertCtrl.create({
+      title: this.getHeader(),
+      subTitle: this.descricao,
+      buttons: ['OK']
+    }).present();
   }
 }

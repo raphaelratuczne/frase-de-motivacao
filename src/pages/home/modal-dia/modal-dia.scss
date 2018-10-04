@@ -3,4 +3,12 @@ page-modal-dia {
     background-size: cover;
     background-image: url('../../assets/imgs/amor-em-estampa-1.jpeg');
   }
+
+  .item-md {
+    background-color: transparent;
+  }
+
+  .item-md.item-block .item-inner {
+    border-bottom: none;
+  }
 }

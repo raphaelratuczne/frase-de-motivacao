@@ -8,9 +8,18 @@
 
 <ion-content padding>
 
-  <div padding>
+  <!-- <div padding>
     <h2>{{ getText() }}</h2>
-  </div>
+  </div> -->
+
+  <ion-card>
+    <!-- <ion-card-content> -->
+      <ion-item>
+        {{ getText() }}
+        <ion-badge *ngIf="descricao" item-end (click)="abrirDescr()">?</ion-badge>
+      </ion-item>
+    <!-- </ion-card-content> -->
+  </ion-card>
 
   <form *ngIf="form" [formGroup]="form" (ngSubmit)="salvar()">
     <ion-list inset>

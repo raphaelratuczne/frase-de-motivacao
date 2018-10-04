@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { DiaProvider } from '../../providers/dia.provider';
 
@@ -16,17 +17,22 @@ declare var cordova;
 })
 export class PalavraPage {
 
-  public palavras = [['Shopping','Hospital'],['Cafe','Dog Park'],['Pub','Space']];
+  public sugestoes = [['Benfeitor','Amigo'],['Companheiro','Renovador'],['Forte','Corajoso']];
   public form: FormGroup;
   private dia: Dia;
+  public descricao: string;
+  private d$: Subject<void>;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
     private diaProvider: DiaProvider,
-    public platform: Platform
+    public platform: Platform,
+    private alertCtrl: AlertController
   ) {
+    this.descricao = this.navParams.get('descr');
+
     this.form = this.formBuilder.group({
       palavra: [null, Validators.required],
       lembretes: [true],
@@ -36,9 +42,14 @@ export class PalavraPage {
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad PalavraPage');
-    this.diaProvider.getDocDadosDia().pipe(first()).subscribe(dados => {
-      this.dia = dados;
-      this.form.get('palavra').setValue(dados.palavra);
+    this.d$ = new Subject();
+    this.diaProvider.getDocDadosDia().pipe(takeUntil(this.d$)).subscribe(dados => {
+      if (dados) {
+        this.dia = dados;
+        this.form.get('palavra').setValue(dados.palavra);
+        this.d$.next();
+        this.d$.complete();
+      }
     });
   }
 
@@ -59,8 +70,8 @@ export class PalavraPage {
           for (let i = r; i <= 16; i+=r) {
             agenda.push({
               id: i,
-              title: 'Amor em estampa',
-              text: 'Lembrete da sua palavra: amor',
+              title: 'Minha Terapia',
+              text: 'Lembrete da sua palavra: ' + this.dia.palavra,
               at: new Date( new Date().getTime() + (i*2000) )
             });
           }
@@ -68,6 +79,14 @@ export class PalavraPage {
         }
       });
     }
+  }
+
+  public abrirDescr() {
+    this.alertCtrl.create({
+      title: 'Palavra',
+      subTitle: this.descricao,
+      buttons: ['OK']
+    }).present();
   }
 
 }

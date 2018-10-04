@@ -4,5 +4,10 @@ page-itens {
     background-size: cover;
     background-image: url('../assets/imgs/amor-em-estampa-1.jpeg');
   }
-  
+
+  ion-label {
+    text-overflow: unset;
+    white-space: normal;
+  }
+
 }

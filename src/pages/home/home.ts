@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, PopoverController, AlertController } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase';
@@ -25,8 +25,10 @@ export class HomePage implements OnInit, OnDestroy {
     public navCtrl: NavController,
     public afAuth: AngularFireAuth,
     private modalCtrl: ModalController,
+    private popoverCtrl: PopoverController,
     private diaProvider: DiaProvider,
-    private fraseProvider: FraseProvider
+    private fraseProvider: FraseProvider,
+    private alertCtrl: AlertController
   ) { }
 
   ngOnInit() {
@@ -60,7 +62,7 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.afAuth.auth.signOut();
+    this.afAuth.auth.signOut().then(() => window.location.reload());
   }
 
   private oauthSignIn(provider) {
@@ -85,5 +87,32 @@ export class HomePage implements OnInit, OnDestroy {
     //   console.log(data);
     //  });
     // modalCalendario.present();
+  }
+
+  public abrirMenu(myEvent) {
+    if (this.dia) {
+      const popover = this.popoverCtrl.create('MenuPage');
+      popover.present({
+        ev: myEvent
+      });
+      popover.onDidDismiss(op => {
+        if (op && op == 'sair') {
+          const confirm = this.alertCtrl.create({
+            title: 'Deslogar?',
+            message: 'Tem certeza que deseja deslogar do Minha Terapia?',
+            buttons: [
+              {
+                text: 'Cancelar'
+              },
+              {
+                text: 'Ok',
+                handler: () => this.logout()
+              }
+            ]
+          });
+          confirm.present();
+        }
+      });
+    }
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
@@ -17,14 +17,18 @@ export class ItensPage {
   public page: string;
   public form: FormGroup;
   private dia: Dia;
+  public descricao: string;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    private diaProvider: DiaProvider
+    private diaProvider: DiaProvider,
+    private alertCtrl: AlertController
   ) {
     this.page = this.navParams.get('page');
+    this.descricao = this.navParams.get('descr');
+
     if (!this.page) {
       this.navCtrl.setRoot('RoteiroPage');
     }
@@ -34,7 +38,6 @@ export class ItensPage {
       palavra2: [null, Validators.required],
       palavra3: [null, Validators.required]
     });
-
   }
 
   ionViewDidLoad() {
@@ -42,7 +45,7 @@ export class ItensPage {
     this.diaProvider.getDocDadosDia().pipe(first()).subscribe(dados => {
       this.dia = dados;
       switch(this.page) {
-        case 'grato':
+        case 'gratidao':
           this.form.get('palavra1').setValue(dados.grato1);
           this.form.get('palavra2').setValue(dados.grato2);
           this.form.get('palavra3').setValue(dados.grato3);
@@ -63,7 +66,7 @@ export class ItensPage {
 
   public getHeader(): string {
     switch (this.page) {
-      case 'grato': return 'Gratidão';
+      case 'gratidao': return 'Gratidão';
       case 'paixao': return 'Paixão';
       case 'plano': return 'Planos';
     }
@@ -71,7 +74,7 @@ export class ItensPage {
 
   public getText(): string {
     switch(this.page) {
-      case 'grato': return 'Sou grato por:';
+      case 'gratidao': return 'Sou grato por:';
       case 'paixao': return 'Minhas paixões são:';
       case 'plano': return 'Meus planos para o futuro são:';
     }
@@ -80,7 +83,7 @@ export class ItensPage {
   public salvar(): void {
     if (this.form.valid) {
       switch(this.page) {
-        case 'grato':
+        case 'gratidao':
           this.dia.grato1 = this.form.value.palavra1;
           this.dia.grato2 = this.form.value.palavra2;
           this.dia.grato3 = this.form.value.palavra3;
@@ -98,5 +101,13 @@ export class ItensPage {
       }
       this.diaProvider.updateDocDadosDia(this.dia).then(() => this.navCtrl.pop());
     }
+  }
+
+  public abrirDescr() {
+    this.alertCtrl.create({
+      title: this.getHeader(),
+      subTitle: this.descricao,
+      buttons: ['OK']
+    }).present();
   }
 }

@@ -5,11 +5,11 @@
       <ion-icon name="menu"></ion-icon>
     </button> -->
     <ion-title>Bem vindo</ion-title>
-    <ion-buttons end>
+    <ion-buttons end *ngIf="dia">
       <button ion-button icon-only (click)="abrirModalCalendario()">
         <ion-icon name="calendar"></ion-icon>
       </button>
-      <button ion-button icon-only >
+      <button ion-button icon-only (click)="abrirMenu($event)">
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
@@ -19,6 +19,7 @@
 <ion-content padding>
 
   <div *ngIf="afAuth.user | async as user; else showLogin">
+
     <h2>Olá {{ user.displayName }}</h2>
 
     <ion-card *ngIf="dia">
@@ -32,8 +33,15 @@
       <button ion-button item-end (click)="comecar()" color="secondary">Comece aqui</button>
     </ion-item>
   </div>
+
   <ng-template #showLogin>
-    <button ion-button (click)="login()" color="secondary">Login with Google</button>
+    <ion-grid class="btn-login">
+      <ion-row>
+        <ion-col col-2></ion-col>
+        <ion-col col-8><button ion-button color="secondary" block (click)="login()">Login com Google</button></ion-col>
+        <ion-col col-2></ion-col>
+      </ion-row>
+    </ion-grid>
   </ng-template>
 
 </ion-content>
