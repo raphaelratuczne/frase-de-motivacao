@@ -4,7 +4,7 @@
     <!-- <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button> -->
-    <ion-title>Bem vindo</ion-title>
+    <ion-title>{{ dia ? 'Bem vindo' : 'Minha Terapia' }}</ion-title>
     <ion-buttons end *ngIf="dia">
       <button ion-button icon-only (click)="abrirModalCalendario()">
         <ion-icon name="calendar"></ion-icon>
