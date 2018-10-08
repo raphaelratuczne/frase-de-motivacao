@@ -24,23 +24,38 @@
 
   <ion-list padding class="lista-opcoes">
     <button ion-item (click)="goItensPage('gratidao')">
-      <ion-icon name="ios-flower-outline" item-start></ion-icon>
+      <!-- <ion-icon name="ios-flower-outline" item-start></ion-icon> -->
+      <ion-avatar item-start>
+        <img src="assets/imgs/maos.png">
+      </ion-avatar>
       Gratidão
     </button>
     <button ion-item (click)="goItensPage('paixao')" [disabled]="desPaixao">
-      <ion-icon name="heart-outline" item-start></ion-icon>
+      <!-- <ion-icon name="heart-outline" item-start></ion-icon> -->
+      <ion-avatar item-start>
+        <img src="assets/imgs/coracao.png">
+      </ion-avatar>
       Paixões
     </button>
     <button ion-item (click)="goItensPage('plano')" [disabled]="desPlano">
-      <ion-icon name="ios-create-outline" item-start></ion-icon>
+      <!-- <ion-icon name="ios-create-outline" item-start></ion-icon> -->
+      <ion-avatar item-start>
+        <img src="assets/imgs/doc.png">
+      </ion-avatar>
       Planos
     </button>
     <button ion-item (click)="goTextoPage('objetivo')" [disabled]="desObjetivo">
-      <ion-icon name="ios-disc-outline" item-start></ion-icon>
+      <!-- <ion-icon name="ios-disc-outline" item-start></ion-icon> -->
+      <ion-avatar item-start>
+        <img src="assets/imgs/alvo.png">
+      </ion-avatar>
       Objetivo
     </button>
     <button ion-item (click)="goTextoPage('orgulho')" [disabled]="desOrgulho">
-      <ion-icon name="star-outline" item-start></ion-icon>
+      <!-- <ion-icon name="star-outline" item-start></ion-icon> -->
+      <ion-avatar item-start>
+        <img src="assets/imgs/estrela.png">
+      </ion-avatar>
       Orgulho
     </button>
   </ion-list>

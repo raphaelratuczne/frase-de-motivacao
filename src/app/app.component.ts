@@ -32,11 +32,13 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-      this.statusBar.styleDefault();
-      setTimeout(() => {this.splashScreen.hide();}, 3000);
+      if (this.platform.is('cordova')) {
+        // Okay, so the platform is ready and our plugins are available.
+        // Here you can do any higher level native things you might need.
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+        this.statusBar.styleDefault();
+        setTimeout(() => {this.splashScreen.hide();}, 3000);
+      }
     });
   }
 
