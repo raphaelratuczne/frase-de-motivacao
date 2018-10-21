@@ -38,7 +38,12 @@
     <ion-grid class="btn-login">
       <ion-row>
         <ion-col col-2></ion-col>
-        <ion-col col-8><button ion-button color="secondary" block (click)="login()">Login com Google</button></ion-col>
+        <ion-col col-8><button ion-button color="secondary" block (click)="login('g')">Login com Google</button></ion-col>
+        <ion-col col-2></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-2></ion-col>
+        <ion-col col-8><button ion-button block (click)="login('f')">Login com Facebook</button></ion-col>
         <ion-col col-2></ion-col>
       </ion-row>
     </ion-grid>

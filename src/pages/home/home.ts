@@ -56,9 +56,13 @@ export class HomePage implements OnInit, OnDestroy {
     this.navCtrl.setRoot('RoteiroPage');
   }
 
-  login() {
-    // this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
-    this.oauthSignIn(new auth.GoogleAuthProvider());
+  login(tipo) {
+    if (tipo == 'g') {
+      // this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+      this.oauthSignIn(new auth.GoogleAuthProvider());
+    } else {
+      this.oauthSignIn(new auth.FacebookAuthProvider());
+    }
   }
 
   logout() {

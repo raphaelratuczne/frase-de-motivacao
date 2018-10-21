@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.raphaelratuczne.motivacaoapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Frases</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <name>Minha Terapia</name>
+    <description>Um aplicativo que auxilia pessoas com depressão a manterem o foco na gratidão e no pensamento positivo.</description>
+    <author email="raphaelratuczne@gmail.com" href="">Raphael Ratuczne</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -83,8 +83,8 @@
             <path url="/__/auth/callback" />
         </host>
     </universal-links>
-    <engine name="android" spec="6.2.3" />
-    <plugin name="cordova-plugin-app-event" spec="~1.2.1" />
+    <engine name="android" spec="^6.2.3" />
+    <plugin name="cordova-plugin-app-event" spec="^1.2.1" />
     <plugin name="cordova-plugin-browsertab" spec="^0.2.0" />
     <plugin name="cordova-plugin-buildinfo" spec="^2.0.2" />
     <plugin name="cordova-plugin-customurlscheme" spec="^4.3.0">
@@ -97,10 +97,9 @@
     <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.1.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^2.1.4" />
-    <plugin name="cordova-plugin-local-notification" spec="^0.9.0-beta.2" />
     <plugin name="cordova-plugin-screen-orientation" spec="^3.0.1" />
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
     <plugin name="cordova-universal-links-plugin" spec="^1.2.1" />
-    <plugin name="de.appplant.cordova.plugin.local-notification" spec="~0.8.5" />
+    <plugin name="de.appplant.cordova.plugin.local-notification" spec="^0.8.5" />
 </widget>
