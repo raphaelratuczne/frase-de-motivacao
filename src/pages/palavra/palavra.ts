@@ -72,7 +72,8 @@ export class PalavraPage {
               id: i,
               title: 'Minha Terapia',
               text: 'Lembrete da sua palavra: ' + this.dia.palavra,
-              at: new Date( new Date().getTime() + (i * 1000 * 60 * 60) )
+              at: new Date( new Date().getTime() + (i * 1000 * 60 * 60) ),
+              data: { lembrete:'lembrete' }
             });
           }
           cordova.plugins.notification.local.schedule(agenda);

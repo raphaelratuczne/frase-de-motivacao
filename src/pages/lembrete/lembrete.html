@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Minha Terapia</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goHome()">
+        <ion-icon name="home"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-grid class="minha-palavra">
+    <ion-row>
+      <ion-col col-2></ion-col>
+      <ion-col col-8>{{ dia?.palavra }}</ion-col>
+      <ion-col col-2></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

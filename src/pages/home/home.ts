@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavController, ModalController, PopoverController, AlertController } from 'ionic-angular';
-import { IonicPage } from 'ionic-angular';
+import { NavController, ModalController, PopoverController, AlertController, IonicPage, ActionSheetController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase';
 import { Subject } from 'rxjs';
 import { takeUntil, first } from 'rxjs/Operators';
 import 'rxjs/add/observable/of';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 import { DiaProvider } from '../../providers/dia.provider';
 import { FraseProvider } from '../../providers/frase.provider';
@@ -28,7 +28,9 @@ export class HomePage implements OnInit, OnDestroy {
     private popoverCtrl: PopoverController,
     private diaProvider: DiaProvider,
     private fraseProvider: FraseProvider,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private socialSharing: SocialSharing,
+    public actionSheetCtrl: ActionSheetController
   ) { }
 
   ngOnInit() {
@@ -118,5 +120,47 @@ export class HomePage implements OnInit, OnDestroy {
         }
       });
     }
+  }
+
+  presentActionSheet() {
+    const actionSheet = this.actionSheetCtrl.create({
+      title: 'Compartilhar sua frase do dia',
+      buttons: [
+        {
+          text: 'Facebook',
+          // role: 'destructive',
+          handler: () => {
+            console.log('facebook');
+          }
+        },{
+          text: 'Messenger',
+          handler: () => {
+            console.log('messenger');
+          }
+        },{
+          text: 'Twitter',
+          handler: () => {
+            console.log('twitter');
+          }
+        },{
+          text: 'Instagram',
+          handler: () => {
+            console.log('instagram');
+          }
+        },{
+          text: 'Watsapp',
+          handler: () => {
+            console.log('watsapp');
+          }
+        },{
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancelou');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 }

@@ -3,6 +3,9 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { Deeplinks } from '@ionic-native/deeplinks';
+
+declare var cordova;
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +21,8 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    private screenOrientation: ScreenOrientation
+    private screenOrientation: ScreenOrientation,
+    private deeplinks: Deeplinks
   ) {
     this.initializeApp();
 
@@ -38,6 +42,26 @@ export class MyApp {
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         this.statusBar.styleDefault();
         setTimeout(() => {this.splashScreen.hide();}, 3000);
+
+        this.deeplinks.route({
+           '/lembrete': 'LembretePage'
+        }).subscribe(match => {
+           // match.$route - the route we matched, which is the matched entry from the arguments to route()
+           // match.$args - the args passed in the link
+           // match.$link - the full link data
+           console.log('Successfully matched route', match);
+           this.nav.setRoot('LembretePage');
+        }, nomatch => {
+           // nomatch.$link - the full link data
+           console.error('Got a deeplink that didn\'t match', nomatch);
+        });
+
+        console.log('notification', cordova.plugins.notification.local);
+        cordova.plugins.notification.local.on('click', (notification) => {
+          console.log('abriu motificação', notification);
+          this.nav.setRoot('LembretePage');
+        });
+
       }
     });
   }

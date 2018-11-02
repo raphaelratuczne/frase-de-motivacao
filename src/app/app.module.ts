@@ -7,6 +7,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { Deeplinks } from '@ionic-native/deeplinks';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 import { configFireBase } from '../const';
 
@@ -31,6 +33,8 @@ import { DescricaoProvider } from '../providers/descricao.provider';
     StatusBar,
     SplashScreen,
     ScreenOrientation,
+    Deeplinks,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: LOCALE_ID, useValue: "pt-BR" },
     DiaProvider,
