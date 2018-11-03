@@ -3,6 +3,14 @@ page-palavra {
   ion-content {
     background-size: cover;
     background-image: url('../assets/imgs/amor-em-estampa-1.jpeg');
+
+    // .item-palavra {
+    //   background-color: red;
+    // }
+
+    .border-r {
+      border-radius: 10px!important;
+    }
   }
 
   ion-label {

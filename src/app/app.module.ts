@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule, LOCALE_ID } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -35,8 +35,7 @@ import { DescricaoProvider } from '../providers/descricao.provider';
     ScreenOrientation,
     Deeplinks,
     SocialSharing,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    { provide: LOCALE_ID, useValue: "pt-BR" },
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     DiaProvider,
     FraseProvider,
     DescricaoProvider

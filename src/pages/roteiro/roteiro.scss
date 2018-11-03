@@ -4,7 +4,7 @@ page-roteiro {
     background-size: cover;
     background-image: url('../assets/imgs/amor-em-estampa-1.jpeg');
   }
-  
+
   ion-card {
     margin: 30px auto !important;
   }
@@ -12,6 +12,15 @@ page-roteiro {
   .lista-opcoes {
     ion-item {
       margin: 15px auto !important;
+    }
+
+    button {
+      border-radius: 5px;
+      margin: 5px 0;
+
+      .item-inner {
+        border-bottom: none!important;
+      }
     }
   }
 

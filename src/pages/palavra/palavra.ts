@@ -67,6 +67,7 @@ export class PalavraPage {
       cordova.plugins.notification.local.cancelAll(() => {
         if (lembretes) {
           let agenda = [], r = parseInt(repetir);
+          // loop para setar todos os lembretes
           for (let i = r; i <= 16; i+=r) {
             agenda.push({
               id: i,
@@ -75,6 +76,19 @@ export class PalavraPage {
               at: new Date( new Date().getTime() + (i * 1000 * 60 * 60) ),
               data: { lembrete:'lembrete' }
             });
+          }
+          // seta lembretes para os proximos 3 dias
+          let hj = new Date();
+          hj.setHours(6);
+          hj.setMinutes(0);
+          hj.setSeconds(0);
+          for (let i = 101; i <= 103; i++) {
+            agenda.push({
+              id: i,
+              title: 'Minha Terapia',
+              text: 'Bom dia, não esqueça de fazer sua terapia hoje.',
+              at: new Date( hj.getTime() + ((i-100) * 1000 * 60 * 60 * 23) )
+            });  
           }
           cordova.plugins.notification.local.schedule(agenda);
         }

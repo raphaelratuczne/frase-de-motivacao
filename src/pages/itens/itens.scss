@@ -3,6 +3,21 @@ page-itens {
   ion-content {
     background-size: cover;
     background-image: url('../assets/imgs/amor-em-estampa-1.jpeg');
+
+    .lista-input {
+      .item-input {
+        margin: 5px 0;
+        border-radius: 10px!important;
+
+        .item-inner {
+          border-bottom: none!important;
+        }
+      }
+      ion-item {
+      }
+    }
+
+
   }
 
   ion-label {

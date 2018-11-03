@@ -15,13 +15,14 @@
 
 <ion-content padding>
   <!-- <p>modal calendario</p> -->
-
-  <ion-calendar [(ngModel)]="date"
-                [options]="options"
-                (onSelect)="onChange($event)"
-                [type]="type"
-                [format]="'YYYY-MM-DD'">
-  </ion-calendar>
+  <!-- <div *ngIf="pronto"> -->
+    <ion-calendar [(ngModel)]="date"
+                  [options]="options"
+                  (onSelect)="onChange($event)"
+                  [type]="type"
+                  [format]="'YYYY-MM-DD'">
+    </ion-calendar>
+  <!-- </div> -->
 
   <ion-item>
     <button ion-button item-end name="button" (click)="fechar()" color="secondary">fechar</button>

@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, /*NavController,*/ NavParams, ViewController, ModalController } from 'ionic-angular';
 import { CalendarComponentOptions } from 'ion2-calendar';
 
+import moment from 'moment';
+import 'moment/locale/pt-br';
+
 @IonicPage()
 @Component({
   selector: 'page-modal-calendario',
@@ -9,13 +12,16 @@ import { CalendarComponentOptions } from 'ion2-calendar';
 })
 export class ModalCalendarioPage {
 
+  // public pronto = false;
+  // private primeiroDia: Date;
   date: string;
   type: 'string'; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
-  options: CalendarComponentOptions = {
-    // from: new Date((new Date('2018-09-12').getTime()) + (new Date().getTimezoneOffset() * 60 * 1000)),
+  options: CalendarComponentOptions; /*= {
+    from: new Date((new Date('2018-09-12').getTime()) + (new Date().getTimezoneOffset() * 60 * 1000)),
     to: new Date(),
-    monthPickerFormat: ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'],
+    monthPickerFormat: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
     weekdays: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+    color: 'secondary'
     // daysConfig:[{
     //   date: new Date( new Date().getTime() - (5*24*60*60*1000) ),
     //   marked: true
@@ -24,7 +30,7 @@ export class ModalCalendarioPage {
     //   disable: true
     // }],
     // monthFormat: 'MMM YYYY'
-  };
+  };*/
   dias: string[];
 
   constructor(
@@ -34,14 +40,27 @@ export class ModalCalendarioPage {
     private modalCtrl: ModalController
   ) {
     this.dias = this.navParams.get('dias');
-    // console.log('dias', this.dias);
+    console.log('dias', this.dias);
+
+    moment.locale('pt-br'); 
 
     // cria um Date a partir da data passada
     const setDia = dia => new Date((new Date(dia).getTime()) + (new Date().getTimezoneOffset() * 60 * 1000));
 
     const primeiroDia = setDia(this.dias[0]);
-    this.options.from = primeiroDia;
-    this.options.daysConfig = [];
+    console.log('primeiroDia1', primeiroDia);
+    // this.options.from = primeiroDia;
+    this.options = {
+      from: setDia(this.dias[0]),
+      to: new Date(),
+      monthPickerFormat: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+      weekdays: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+      color: 'secondary',
+      monthFormat: 'MMMM YYYY',
+      daysConfig: []
+    };
+
+    // this.options.daysConfig = [];
     for (let d = primeiroDia; d <= new Date(); d.setTime( d.getTime() + (24*60*60*1000) ) ) {
       this.options.daysConfig.push({
         date: new Date(d),
@@ -53,6 +72,10 @@ export class ModalCalendarioPage {
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad ModalCalendarioPage');
+    // this.pronto = true;
+    // console.log('primeiroDia2', this.primeiroDia);
+    // this.options.from = new Date((new Date('2018-09-12').getTime()) + (new Date().getTimezoneOffset() * 60 * 1000));
+    // this.options.from =  new Date((new Date(this.dias[0]).getTime()) + (new Date().getTimezoneOffset() * 60 * 1000));
   }
 
   public onChange($event) {
