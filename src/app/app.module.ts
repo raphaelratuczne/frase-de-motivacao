@@ -17,6 +17,7 @@ import { MyApp } from './app.component';
 import { DiaProvider } from '../providers/dia.provider';
 import { FraseProvider } from '../providers/frase.provider';
 import { DescricaoProvider } from '../providers/descricao.provider';
+import { PalavraProvider } from '../providers/palavra.provider';
 
 @NgModule({
   declarations: [MyApp],
@@ -38,7 +39,8 @@ import { DescricaoProvider } from '../providers/descricao.provider';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     DiaProvider,
     FraseProvider,
-    DescricaoProvider
+    DescricaoProvider,
+    PalavraProvider
   ]
 })
 export class AppModule {}

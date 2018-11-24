@@ -5,8 +5,10 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { DiaProvider } from '../../providers/dia.provider';
+import { PalavraProvider } from '../../providers/palavra.provider';
 
 import { Dia } from '../../models/dia';
+import { Palavra } from '../../models/palavra';
 
 declare var cordova;
 
@@ -17,7 +19,7 @@ declare var cordova;
 })
 export class PalavraPage {
 
-  public sugestoes = [['Benfeitor','Amigo'],['Companheiro','Renovador'],['Forte','Corajoso']];
+  public sugestoes = []; // [['Benfeitor','Amigo'],['Companheiro','Renovador'],['Forte','Corajoso']];
   public form: FormGroup;
   private dia: Dia;
   public descricao: string;
@@ -28,6 +30,7 @@ export class PalavraPage {
     public navParams: NavParams,
     private formBuilder: FormBuilder,
     private diaProvider: DiaProvider,
+    private palavraProvider: PalavraProvider,
     public platform: Platform,
     private alertCtrl: AlertController
   ) {
@@ -37,6 +40,15 @@ export class PalavraPage {
       palavra: [null, Validators.required],
       lembretes: [true],
       repetir: ['1']
+    });
+
+    this.palavraProvider.getPalavras().subscribe((p:Palavra[]) => {
+      p = p.sort(() => 0.5 - Math.random());
+      this.sugestoes = [
+        [p[0].palavra, p[1].palavra],
+        [p[2].palavra, p[3].palavra],
+        [p[4].palavra, p[5].palavra]
+      ];
     });
   }
 
@@ -57,8 +69,14 @@ export class PalavraPage {
     if (this.form.valid) {
       console.log(this.form.value);
       this.setAlertas(this.form.value.lembretes, this.form.value.repetir);
-      this.dia.palavra = this.form.value.palavra;
-      this.diaProvider.updateDocDadosDia(this.dia).then(() => this.navCtrl.pop());
+      if (!this.dia.palavra) {
+        this.dia.palavra = this.form.value.palavra;
+        this.diaProvider.updateDocDadosDia(this.dia).then(() => this.alertaRoteiro());
+      }
+      else {
+        this.dia.palavra = this.form.value.palavra;
+        this.diaProvider.updateDocDadosDia(this.dia).then(() => this.navCtrl.pop());
+      }
     }
   }
 
@@ -82,13 +100,13 @@ export class PalavraPage {
           hj.setHours(6);
           hj.setMinutes(0);
           hj.setSeconds(0);
-          for (let i = 101; i <= 103; i++) {
+          for (let i = 101; i <= 107; i++) {
             agenda.push({
               id: i,
               title: 'Minha Terapia',
               text: 'Bom dia, não esqueça de fazer sua terapia hoje.',
               at: new Date( hj.getTime() + ((i-100) * 1000 * 60 * 60 * 23) )
-            });  
+            });
           }
           cordova.plugins.notification.local.schedule(agenda);
         }
@@ -101,6 +119,19 @@ export class PalavraPage {
       title: 'Palavra',
       subTitle: this.descricao,
       buttons: ['OK']
+    }).present();
+  }
+
+  private alertaRoteiro() {
+    this.alertCtrl.create({
+      title: 'Parabéns',
+      subTitle: 'Seu diário foi finalizado com sucesso.',
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+          this.navCtrl.pop();
+        }
+      }]
     }).present();
   }
 

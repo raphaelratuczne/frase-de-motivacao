@@ -122,6 +122,10 @@ export class HomePage implements OnInit, OnDestroy {
     }
   }
 
+  share() {
+    this.socialSharing.share(this.dia.frase, 'Minha Terapia');
+  }
+
   presentActionSheet() {
     const actionSheet = this.actionSheetCtrl.create({
       title: 'Compartilhar sua frase do dia',

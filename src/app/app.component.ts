@@ -41,7 +41,7 @@ export class MyApp {
         // Here you can do any higher level native things you might need.
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         this.statusBar.styleDefault();
-        setTimeout(() => {this.splashScreen.hide();}, 3000);
+        setTimeout(() => {this.splashScreen.hide();}, 5000);
 
         this.deeplinks.route({
            '/lembrete': 'LembretePage'
@@ -49,16 +49,16 @@ export class MyApp {
            // match.$route - the route we matched, which is the matched entry from the arguments to route()
            // match.$args - the args passed in the link
            // match.$link - the full link data
-           console.log('Successfully matched route', match);
+           // console.log('Successfully matched route', match);
            this.nav.setRoot('LembretePage');
         }, nomatch => {
            // nomatch.$link - the full link data
-           console.error('Got a deeplink that didn\'t match', nomatch);
+           // console.error('Got a deeplink that didn\'t match', nomatch);
         });
 
-        console.log('notification', cordova.plugins.notification.local);
+        // console.log('notification', cordova.plugins.notification.local);
         cordova.plugins.notification.local.on('click', (notification) => {
-          console.log('abriu motificação', notification);
+          // console.log('abriu motificação', notification);
           this.nav.setRoot('LembretePage');
         });
 
