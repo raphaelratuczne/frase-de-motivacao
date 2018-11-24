@@ -64,7 +64,7 @@ export class RoteiroPage implements OnDestroy {
   }
 
   public goPalavraPage() {
-    this.navCtrl.push('PalavraPage', { descr: this.descricao.palavra });
+    this.navCtrl.push('PalavraPage', { descr: this.descricao.palavra, alerta: this.descricao.alerta });
   }
 
   public goHome() {

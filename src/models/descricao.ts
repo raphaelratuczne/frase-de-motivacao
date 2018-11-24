@@ -1,4 +1,5 @@
 export class Descricao {
+  alerta: string;
   roteiro: string;
   gratidao: string;
   paixao: string;

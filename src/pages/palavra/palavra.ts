@@ -23,6 +23,7 @@ export class PalavraPage {
   public form: FormGroup;
   private dia: Dia;
   public descricao: string;
+  public alerta: string;
   private d$: Subject<void>;
 
   constructor(
@@ -35,6 +36,7 @@ export class PalavraPage {
     private alertCtrl: AlertController
   ) {
     this.descricao = this.navParams.get('descr');
+    this.alerta = this.navParams.get('alerta');
 
     this.form = this.formBuilder.group({
       palavra: [null, Validators.required],
@@ -118,6 +120,14 @@ export class PalavraPage {
     this.alertCtrl.create({
       title: 'Palavra',
       subTitle: this.descricao,
+      buttons: ['OK']
+    }).present();
+  }
+
+  public abrirAlerta() {
+    this.alertCtrl.create({
+      title: 'Alertas',
+      subTitle: this.alerta,
       buttons: ['OK']
     }).present();
   }

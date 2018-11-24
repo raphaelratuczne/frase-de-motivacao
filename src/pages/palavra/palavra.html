@@ -41,6 +41,7 @@
       <ion-item class="border-r">
         <ion-label>Usar alertas para lembrar durante o dia</ion-label>
         <ion-checkbox formControlName="lembretes" color="dark"></ion-checkbox>
+        <ion-badge *ngIf="alerta" item-end (click)="abrirAlerta()">?</ion-badge>
       </ion-item>
       <br>
 
