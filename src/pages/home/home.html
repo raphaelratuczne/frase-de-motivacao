@@ -22,10 +22,13 @@
 
     <h2>Olá {{ user.displayName }}</h2>
 
-    <ion-card *ngIf="dia">
-      <ion-card-content>
-        {{ dia.frase }}
-      </ion-card-content>
+    <!-- <ion-card *ngIf="dia"> -->
+    <div *ngIf="dia">
+      <!-- <ion-card-content> -->
+        <p class="frase-dia">
+          {{ dia.frase }}
+        </p>
+      <!-- </ion-card-content> -->
 
       <ion-row no-padding *ngIf="dia.frase">
         <ion-col></ion-col>
@@ -37,9 +40,12 @@
         </ion-col>
       </ion-row>
 
-    </ion-card>
+    </div>
+    <!-- </ion-card> -->
 
     <!-- <button ion-button (click)="logout()" color="secondary">logout</button> -->
+    <br>
+    <br>
     <ion-item>
       <button ion-button item-end (click)="comecar()" color="secondary">Comece aqui</button>
     </ion-item>
