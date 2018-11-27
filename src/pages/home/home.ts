@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavController, ModalController, PopoverController, AlertController, IonicPage, ActionSheetController } from 'ionic-angular';
+import { NavController, ModalController, PopoverController, AlertController, IonicPage/*, ActionSheetController*/ } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase';
 import { Subject } from 'rxjs';
@@ -29,8 +29,8 @@ export class HomePage implements OnInit, OnDestroy {
     private diaProvider: DiaProvider,
     private fraseProvider: FraseProvider,
     private alertCtrl: AlertController,
-    private socialSharing: SocialSharing,
-    public actionSheetCtrl: ActionSheetController
+    // public actionSheetCtrl: ActionSheetController,
+    private socialSharing: SocialSharing
   ) { }
 
   ngOnInit() {
@@ -123,48 +123,93 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   share() {
-    this.socialSharing.share(this.dia.frase, 'Minha Terapia');
+    let txt = this.dia.frase;
+    let canvas = document.createElement('canvas');
+    canvas.width = 800;
+    canvas.height = 800;
+    let c = canvas.getContext('2d');
+    c.fillStyle = '#424143';
+    c.textAlign = 'center';
+    let imageObj = new Image();
+    imageObj.onload = () => {
+      c.drawImage(imageObj, 0, 0, 800, 800);
+      c.font = '42px rodona';
+      c.fillText('Minha Terapia', 400, 130);
+      c.font = '26px rodona';
+      printAtWordWrap(c, txt, 400, 200, 30, 600);
+      this.socialSharing.share(null, 'Minha Terapia', canvas.toDataURL());
+    }
+    imageObj.src = '../assets/imgs/amor-em-estampa-padrao-instagram.png';
   }
 
-  presentActionSheet() {
-    const actionSheet = this.actionSheetCtrl.create({
-      title: 'Compartilhar sua frase do dia',
-      buttons: [
-        {
-          text: 'Facebook',
-          // role: 'destructive',
-          handler: () => {
-            console.log('facebook');
-          }
-        },{
-          text: 'Messenger',
-          handler: () => {
-            console.log('messenger');
-          }
-        },{
-          text: 'Twitter',
-          handler: () => {
-            console.log('twitter');
-          }
-        },{
-          text: 'Instagram',
-          handler: () => {
-            console.log('instagram');
-          }
-        },{
-          text: 'Watsapp',
-          handler: () => {
-            console.log('watsapp');
-          }
-        },{
-          text: 'Cancelar',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancelou');
-          }
-        }
-      ]
-    });
-    actionSheet.present();
+  // presentActionSheet() {
+  //   const actionSheet = this.actionSheetCtrl.create({
+  //     title: 'Compartilhar sua frase do dia',
+  //     buttons: [
+  //       {
+  //         text: 'Facebook',
+  //         // role: 'destructive',
+  //         handler: () => {
+  //           console.log('facebook');
+  //         }
+  //       },{
+  //         text: 'Messenger',
+  //         handler: () => {
+  //           console.log('messenger');
+  //         }
+  //       },{
+  //         text: 'Twitter',
+  //         handler: () => {
+  //           console.log('twitter');
+  //         }
+  //       },{
+  //         text: 'Instagram',
+  //         handler: () => {
+  //           console.log('instagram');
+  //         }
+  //       },{
+  //         text: 'Watsapp',
+  //         handler: () => {
+  //           console.log('watsapp');
+  //         }
+  //       },{
+  //         text: 'Cancelar',
+  //         role: 'cancel',
+  //         handler: () => {
+  //           console.log('Cancelou');
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   actionSheet.present();
+  // }
+}
+
+const printAtWordWrap = (context , text, x, y, lineHeight, fitWidth) => {
+  fitWidth = fitWidth || 0;
+
+  if (fitWidth <= 0) {
+    context.fillText( text, x, y );
+    return;
   }
+  let words = text.split(' '),
+  currentLine = 0,
+  idx = 1;
+  while (words.length > 0 && idx <= words.length) {
+    let str = words.slice(0, idx).join(' ');
+    let w = context.measureText(str).width;
+    if ( w > fitWidth ) {
+      if (idx == 1) {
+        idx = 2;
+      }
+      context.fillText( words.slice(0,idx-1).join(' '), x, y + (lineHeight*currentLine) );
+      currentLine++;
+      words = words.splice(idx-1);
+      idx = 1;
+    }
+    else {
+      idx++;
+    }
+  }
+  if (idx > 0) context.fillText( words.join(' '), x, y + (lineHeight*currentLine) );
 }
