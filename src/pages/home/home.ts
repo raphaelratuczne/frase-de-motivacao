@@ -9,6 +9,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 
 import { DiaProvider } from '../../providers/dia.provider';
 import { FraseProvider } from '../../providers/frase.provider';
+import { LocalNotificationProvider } from '../../providers/local-notification.provider';
 
 import { Dia } from '../../models/dia';
 
@@ -30,7 +31,8 @@ export class HomePage implements OnInit, OnDestroy {
     private fraseProvider: FraseProvider,
     private alertCtrl: AlertController,
     // public actionSheetCtrl: ActionSheetController,
-    private socialSharing: SocialSharing
+    private socialSharing: SocialSharing,
+    private localNotificationProvider: LocalNotificationProvider
   ) { }
 
   ngOnInit() {
@@ -46,6 +48,7 @@ export class HomePage implements OnInit, OnDestroy {
           d$.next();
           d$.complete();
         }
+        this.localNotificationProvider.setAlertasUsarApp();
       }
     });
   }
@@ -133,56 +136,15 @@ export class HomePage implements OnInit, OnDestroy {
     let imageObj = new Image();
     imageObj.onload = () => {
       c.drawImage(imageObj, 0, 0, 800, 800);
-      c.font = '42px rodona';
+      c.font = '50px rodona';
       c.fillText('Minha Terapia', 400, 130);
-      c.font = '26px rodona';
-      printAtWordWrap(c, txt, 400, 200, 30, 600);
+      c.font = '34px rodona';
+      printAtWordWrap(c, txt, 400, 250, 38, 600);
       this.socialSharing.share(null, 'Minha Terapia', canvas.toDataURL());
     }
-    imageObj.src = '../assets/imgs/amor-em-estampa-padrao-instagram.png';
+    imageObj.src = 'assets/imgs/amor-em-estampa-padrao-instagram.png';
   }
 
-  // presentActionSheet() {
-  //   const actionSheet = this.actionSheetCtrl.create({
-  //     title: 'Compartilhar sua frase do dia',
-  //     buttons: [
-  //       {
-  //         text: 'Facebook',
-  //         // role: 'destructive',
-  //         handler: () => {
-  //           console.log('facebook');
-  //         }
-  //       },{
-  //         text: 'Messenger',
-  //         handler: () => {
-  //           console.log('messenger');
-  //         }
-  //       },{
-  //         text: 'Twitter',
-  //         handler: () => {
-  //           console.log('twitter');
-  //         }
-  //       },{
-  //         text: 'Instagram',
-  //         handler: () => {
-  //           console.log('instagram');
-  //         }
-  //       },{
-  //         text: 'Watsapp',
-  //         handler: () => {
-  //           console.log('watsapp');
-  //         }
-  //       },{
-  //         text: 'Cancelar',
-  //         role: 'cancel',
-  //         handler: () => {
-  //           console.log('Cancelou');
-  //         }
-  //       }
-  //     ]
-  //   });
-  //   actionSheet.present();
-  // }
 }
 
 const printAtWordWrap = (context , text, x, y, lineHeight, fitWidth) => {

@@ -18,6 +18,7 @@ import { DiaProvider } from '../providers/dia.provider';
 import { FraseProvider } from '../providers/frase.provider';
 import { DescricaoProvider } from '../providers/descricao.provider';
 import { PalavraProvider } from '../providers/palavra.provider';
+import { LocalNotificationProvider } from '../providers/local-notification.provider';
 
 @NgModule({
   declarations: [MyApp],
@@ -26,7 +27,7 @@ import { PalavraProvider } from '../providers/palavra.provider';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(configFireBase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule.enablePersistence()
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp],
@@ -40,7 +41,8 @@ import { PalavraProvider } from '../providers/palavra.provider';
     DiaProvider,
     FraseProvider,
     DescricaoProvider,
-    PalavraProvider
+    PalavraProvider,
+    LocalNotificationProvider
   ]
 })
 export class AppModule {}

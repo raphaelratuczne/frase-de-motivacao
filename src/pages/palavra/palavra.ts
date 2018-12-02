@@ -6,11 +6,10 @@ import { takeUntil } from 'rxjs/operators';
 
 import { DiaProvider } from '../../providers/dia.provider';
 import { PalavraProvider } from '../../providers/palavra.provider';
+import { LocalNotificationProvider } from '../../providers/local-notification.provider';
 
 import { Dia } from '../../models/dia';
 import { Palavra } from '../../models/palavra';
-
-declare var cordova;
 
 @IonicPage()
 @Component({
@@ -33,7 +32,8 @@ export class PalavraPage {
     private diaProvider: DiaProvider,
     private palavraProvider: PalavraProvider,
     public platform: Platform,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    public localNotificationProvider: LocalNotificationProvider
   ) {
     this.descricao = this.navParams.get('descr');
     this.alerta = this.navParams.get('alerta');
@@ -69,8 +69,8 @@ export class PalavraPage {
 
   public salvar(): void {
     if (this.form.valid) {
-      console.log(this.form.value);
-      this.setAlertas(this.form.value.lembretes, this.form.value.repetir);
+      // console.log(this.form.value);
+      this.localNotificationProvider.setAlertasPalavra(this.form.value.palavra, this.form.value.lembretes, this.form.value.repetir);
       if (!this.dia.palavra) {
         this.dia.palavra = this.form.value.palavra;
         this.diaProvider.updateDocDadosDia(this.dia).then(() => this.alertaRoteiro());
@@ -79,40 +79,6 @@ export class PalavraPage {
         this.dia.palavra = this.form.value.palavra;
         this.diaProvider.updateDocDadosDia(this.dia).then(() => this.navCtrl.pop());
       }
-    }
-  }
-
-  private setAlertas(lembretes:boolean, repetir:string): void {
-    if (this.platform.is('cordova')) {
-      cordova.plugins.notification.local.cancelAll(() => {
-        if (lembretes) {
-          let agenda = [], r = parseInt(repetir);
-          // loop para setar todos os lembretes
-          for (let i = r; i <= 16; i+=r) {
-            agenda.push({
-              id: i,
-              title: 'Minha Terapia',
-              text: 'Lembrete da sua palavra: ' + this.dia.palavra,
-              at: new Date( new Date().getTime() + (i * 1000 * 60 * 60) ),
-              data: { lembrete:'lembrete' }
-            });
-          }
-          // seta lembretes para os proximos 3 dias
-          let hj = new Date();
-          hj.setHours(6);
-          hj.setMinutes(0);
-          hj.setSeconds(0);
-          for (let i = 101; i <= 107; i++) {
-            agenda.push({
-              id: i,
-              title: 'Minha Terapia',
-              text: 'Bom dia, não esqueça de fazer sua terapia hoje.',
-              at: new Date( hj.getTime() + ((i-100) * 1000 * 60 * 60 * 23) )
-            });
-          }
-          cordova.plugins.notification.local.schedule(agenda);
-        }
-      });
     }
   }
 
