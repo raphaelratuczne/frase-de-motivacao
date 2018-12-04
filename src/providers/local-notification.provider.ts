@@ -11,26 +11,32 @@ export class LocalNotificationProvider {
   // seta lembretes para os proximos 7 dias
   public setAlertasUsarApp() {
     if (this.platform.is('cordova')) {
-      let hj = new Date();
-      hj.setHours(6);
-      hj.setMinutes(0);
-      hj.setSeconds(0);
-      const amanha = new Date( hj.getTime() + (1000 * 60 * 60 * 24) );
-
-      cordova.plugins.notification.local.schedule({
-        id: 99,
-        title: 'Minha Terapia',
-        text: 'Bom dia, não esqueça de fazer sua terapia hoje.',
-        firstAt: amanha,
-        every: 'day'
+      cordova.plugins.notification.local.isPresent(99, (present) => {
+        if (!present) {
+          cordova.plugins.notification.local.schedule(this.criarAlertaUsarApp());
+        }
       });
     }
+  }
+
+  private criarAlertaUsarApp() {
+    let hj = new Date();
+    hj.setHours(6);
+    hj.setMinutes(0);
+    hj.setSeconds(0);
+
+    return {
+      id: 99,
+      title: 'Minha Terapia',
+      text: 'Bom dia, não esqueça de fazer sua terapia hoje.',
+      firstAt: new Date( hj.getTime() + (1000 * 60 * 60 * 24) ),
+      every: 'day'
+    };
   }
 
   public setAlertasPalavra(palavra: string, lembretes:boolean, repetir:string): void {
     if (this.platform.is('cordova')) {
       cordova.plugins.notification.local.cancelAll(() => {
-        this.setAlertasUsarApp();
         if (lembretes) {
           let agenda = [], r = parseInt(repetir);
           // loop para setar todos os lembretes
@@ -43,6 +49,7 @@ export class LocalNotificationProvider {
               data: { lembrete:'lembrete' }
             });
           }
+          agenda.push(this.criarAlertaUsarApp());
           cordova.plugins.notification.local.schedule(agenda);
         }
       });
