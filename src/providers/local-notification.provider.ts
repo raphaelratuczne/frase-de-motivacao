@@ -30,6 +30,7 @@ export class LocalNotificationProvider {
   public setAlertasPalavra(palavra: string, lembretes:boolean, repetir:string): void {
     if (this.platform.is('cordova')) {
       cordova.plugins.notification.local.cancelAll(() => {
+        this.setAlertasUsarApp();
         if (lembretes) {
           let agenda = [], r = parseInt(repetir);
           // loop para setar todos os lembretes
@@ -43,7 +44,6 @@ export class LocalNotificationProvider {
             });
           }
           cordova.plugins.notification.local.schedule(agenda);
-          this.setAlertasUsarApp();
         }
       });
     }

@@ -39,6 +39,7 @@ export class HomePage implements OnInit, OnDestroy {
     const d$ = new Subject();
     this.diaProvider.getDocDadosDia().pipe(takeUntil(d$)).subscribe(async dia => {
       if (dia) {
+        this.localNotificationProvider.setAlertasUsarApp();
         this.dia = dia;
         if (!dia.frase) {
           // carrega lista de frasesIndex
@@ -48,7 +49,6 @@ export class HomePage implements OnInit, OnDestroy {
           d$.next();
           d$.complete();
         }
-        this.localNotificationProvider.setAlertasUsarApp();
       }
     });
   }

@@ -101,7 +101,7 @@ export class PalavraPage {
   private alertaRoteiro() {
     this.alertCtrl.create({
       title: 'Parabéns',
-      subTitle: 'Seu diário foi finalizado com sucesso.',
+      subTitle: 'Seu diário foi finalizado com sucesso.<br><br>Acompanhe nosso instagram:<br><br>@amoremestampa',
       buttons: [{
         text: 'OK',
         handler: () => {
