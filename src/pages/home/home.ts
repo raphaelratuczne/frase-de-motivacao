@@ -33,13 +33,14 @@ export class HomePage implements OnInit, OnDestroy {
     // public actionSheetCtrl: ActionSheetController,
     private socialSharing: SocialSharing,
     private localNotificationProvider: LocalNotificationProvider
-  ) { }
+  ) {
+    this.localNotificationProvider.setAlertasUsarApp();
+  }
 
   ngOnInit() {
     const d$ = new Subject();
     this.diaProvider.getDocDadosDia().pipe(takeUntil(d$)).subscribe(async dia => {
       if (dia) {
-        this.localNotificationProvider.setAlertasUsarApp();
         this.dia = dia;
         if (!dia.frase) {
           // carrega lista de frasesIndex
