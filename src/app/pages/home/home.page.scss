@@ -1,0 +1,45 @@
+app-home {
+
+  .conteudo-home {
+    .fundo {
+      height: 100%;
+      background-image: url('../../../assets/imgs/amor-em-estampa-1.jpeg');
+      background-size: contain;
+
+      h2 {
+        width: 100%;
+        text-align: center;
+        font-size: 1.6em;
+        margin: 20px auto !important;
+      }
+
+      .frase-dia {
+        margin-top: 30px;
+        padding: 0 20px;
+        text-align: center;
+      }
+
+      .item {
+        --ion-item-background: none;
+        --ion-item-border-color: transparent;
+      }
+
+    }
+  }
+
+}
+// page-home {
+
+
+  // ion-card {
+  //   margin-top: 30px !important;
+  // }
+
+
+
+
+  // .btn-login {
+  //   margin-top: 200px;
+  // }
+
+// }

@@ -1,0 +1,30 @@
+
+<ion-header>
+
+  <ion-toolbar color="primary">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="fechar()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Dias de uso</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!-- <p>modal calendario</p> -->
+  <!-- <div *ngIf="pronto"> -->
+    <!-- <ion-calendar [(ngModel)]="date"
+                  [options]="options"
+                  (onSelect)="onChange($event)"
+                  [type]="type"
+                  [format]="'YYYY-MM-DD'">
+    </ion-calendar> -->
+  <!-- </div> -->
+
+  <ion-item>
+    <button ion-button item-end name="button" (click)="fechar()" color="secondary">fechar</button>
+  </ion-item>
+</ion-content>

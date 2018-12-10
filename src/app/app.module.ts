@@ -1,48 +1,36 @@
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { ScreenOrientation } from '@ionic-native/screen-orientation';
-import { Deeplinks } from '@ionic-native/deeplinks';
-import { SocialSharing } from '@ionic-native/social-sharing';
+import { RouteReuseStrategy } from '@angular/router';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
-import { configFireBase } from '../const';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 
-import { MyApp } from './app.component';
-
-import { DiaProvider } from '../providers/dia.provider';
-import { FraseProvider } from '../providers/frase.provider';
-import { DescricaoProvider } from '../providers/descricao.provider';
-import { PalavraProvider } from '../providers/palavra.provider';
-import { LocalNotificationProvider } from '../providers/local-notification.provider';
+import { configFireBase } from './const';
 
 @NgModule({
-  declarations: [MyApp],
+  declarations: [AppComponent],
+  entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(),
+    AppRoutingModule,
     AngularFireModule.initializeApp(configFireBase),
     AngularFireAuthModule,
-    AngularFirestoreModule.enablePersistence()
+    AngularFirestoreModule
   ],
-  bootstrap: [IonicApp],
-  entryComponents: [MyApp],
   providers: [
     StatusBar,
     SplashScreen,
-    ScreenOrientation,
-    Deeplinks,
-    SocialSharing,
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-    DiaProvider,
-    FraseProvider,
-    DescricaoProvider,
-    PalavraProvider,
-    LocalNotificationProvider
-  ]
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    ScreenOrientation
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

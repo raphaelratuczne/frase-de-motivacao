@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <!-- <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title>{{ dia ? 'Bem vindo' : 'Minha Terapia' }}</ion-title>
+    <ion-buttons slot="secondary" *ngIf="dia">
+      <ion-button (click)="abrirModalCalendario()">
+        <ion-icon slot="icon-only" name="calendar"></ion-icon>
+      </ion-button>
+      <ion-button (click)="abrirMenu($event)">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="conteudo-home">
+  <div class="fundo" padding>
+
+    <div *ngIf="afAuth.user | async as user; else showLogin">
+
+      <h2>Olá {{ user.displayName }}</h2>
+
+      <div *ngIf="dia">
+        <p class="frase-dia">
+          {{ dia.frase }}
+        </p>
+
+        <ion-row no-padding *ngIf="dia.frase">
+          <ion-col></ion-col>
+          <ion-col text-right>
+            <ion-button fill="clear" size="small" color="secondary" (click)="share()">
+              <ion-icon slot="start" name='share-alt'></ion-icon>
+              Compartilhar
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <br>
+      <br>
+      <ion-item class="item">
+        <ion-button slot="end" (click)="comecar()" color="secondary">Comece aqui</ion-button>
+      </ion-item>
+    </div>
+
+    <ng-template #showLogin>
+      <ion-grid class="btn-login">
+        <ion-row>
+          <ion-col col-2></ion-col>
+          <ion-col col-8><button ion-button color="secondary" block (click)="login('g')">Login com Google</button></ion-col>
+          <ion-col col-2></ion-col>
+        </ion-row>
+        <!-- <ion-row>
+          <ion-col col-2></ion-col>
+          <ion-col col-8><button ion-button block (click)="login('f')">Login com Facebook</button></ion-col>
+          <ion-col col-2></ion-col>
+        </ion-row> -->
+      </ion-grid>
+    </ng-template>
+  </div>
+
+</ion-content>

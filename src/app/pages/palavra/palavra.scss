@@ -1,0 +1,20 @@
+page-palavra {
+
+  ion-content {
+    background-size: cover;
+    background-image: url('assets/imgs/amor-em-estampa-3.jpg');
+
+    .border-r {
+      border-radius: 10px!important;
+    }
+  }
+
+  ion-label {
+    text-overflow: unset;
+    white-space: normal;
+  }
+
+  ion-badge {
+    z-index: 10;
+  }
+}

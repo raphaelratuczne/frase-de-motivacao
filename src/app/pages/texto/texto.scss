@@ -1,0 +1,17 @@
+page-texto {
+
+  ion-content {
+    background-size: cover;
+    background-image: url('assets/imgs/amor-em-estampa-1.jpeg');
+
+    .item-textearea {
+      border-radius: 10px!important;
+    }
+  }
+
+  ion-label {
+    text-overflow: unset;
+    white-space: normal;
+  }
+
+}
