@@ -1,25 +1,27 @@
 page-roteiro {
 
-  ion-content {
-    background-size: cover;
-    background-image: url('assets/imgs/amor-em-estampa-2.jpg');
-  }
+  .conteudo-roteiro {
+    .fundo {
+      height: 100%;
+      background: url('../../../assets/imgs/amor-em-estampa-2.jpg') center;
+      background-size: contain;
 
-  ion-card {
-    margin: 30px auto !important;
-  }
+      ion-card {
+        margin: 26px auto !important;
+      }
 
-  .lista-opcoes {
-    ion-item {
-      margin: 15px auto !important;
-    }
+      .lista-opcoes {
+        background-color: transparent!important;
 
-    button {
-      border-radius: 5px;
-      margin: 5px 0;
+        ion-item {
+          margin: 8px auto !important;
+          --border-radius: 10px;
 
-      .item-inner {
-        border-bottom: none!important;
+          ion-thumbnail {
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+        }
       }
     }
   }

@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Subject } from 'rxjs';
@@ -12,7 +12,9 @@ import { DescricaoProvider } from '../../services/descricao.provider';
 
 @Component({
   selector: 'page-roteiro',
-  templateUrl: 'roteiro.html'
+  templateUrl: 'roteiro.html',
+  styleUrls: ['roteiro.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class RoteiroPage implements OnDestroy {
 
@@ -54,11 +56,11 @@ export class RoteiroPage implements OnDestroy {
   }
 
   public goItensPage(pg:string) {
-    this.router.navigateByUrl(`itens/${pg}/${this.descricao[pg]}`);
+    this.router.navigateByUrl(`itens/${pg}/${btoa(this.descricao[pg])}`);
   }
 
   public goTextoPage(pg:string) {
-    this.router.navigateByUrl(`texto/${pg}/${this.descricao[pg]}`);
+    this.router.navigateByUrl(`texto/${pg}/${btoa(this.descricao[pg])}`);
   }
 
   public goPalavraPage() {

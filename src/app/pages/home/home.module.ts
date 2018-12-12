@@ -7,6 +7,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 import { HomePage } from './home.page';
 import { ModalCalendarioPageModule } from './modal-calendario/modal-calendario.module';
+import { ModalCalendarioPage } from './modal-calendario/modal-calendario';
 import { ModalDiaPageModule } from './modal-dia/modal-dia.module';
 import { MenuPageModule } from './menu/menu.module';
 
@@ -27,6 +28,7 @@ import { MenuPageModule } from './menu/menu.module';
     MenuPageModule
   ],
   declarations: [HomePage],
-  providers: [SocialSharing]
+  providers: [SocialSharing],
+  entryComponents: [ModalCalendarioPage]
 })
 export class HomePageModule {}

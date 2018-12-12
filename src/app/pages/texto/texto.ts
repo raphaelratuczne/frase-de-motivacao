@@ -28,7 +28,7 @@ export class TextoPage {
   ) {
     this.route.params.pipe(first()).subscribe(params => {
       this.page = params.page;
-      this.descricao = params.descr;
+      this.descricao = atob(params.descr);
 
       if (!this.page) {
         this.router.navigateByUrl('roteiro');

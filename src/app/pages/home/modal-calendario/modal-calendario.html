@@ -2,10 +2,10 @@
 <ion-header>
 
   <ion-toolbar color="primary">
-    <ion-buttons left>
-      <button ion-button icon-only (click)="fechar()">
-        <ion-icon name="arrow-back"></ion-icon>
-      </button>
+    <ion-buttons  slot="start">
+      <ion-button (click)="fechar()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>Dias de uso</ion-title>
   </ion-toolbar>
@@ -25,6 +25,6 @@
   <!-- </div> -->
 
   <ion-item>
-    <button ion-button item-end name="button" (click)="fechar()" color="secondary">fechar</button>
+    <ion-button item-end name="button" (click)="fechar()" color="secondary">fechar</ion-button>
   </ion-item>
 </ion-content>

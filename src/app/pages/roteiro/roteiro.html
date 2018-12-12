@@ -4,68 +4,81 @@
       <ion-icon name="menu"></ion-icon>
     </button> -->
     <ion-title>Roteiro</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="goHome()">
-        <ion-icon name="home"></ion-icon>
-      </button>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="goHome()">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-card>
-    <!-- <ion-card-content> -->
-      <ion-item>
-        Siga o roteiro abaixo:
-        <ion-badge *ngIf="descricao?.roteiro" item-end (click)="abrirDescr()">?</ion-badge>
-      </ion-item>
-    <!-- </ion-card-content> -->
-  </ion-card>
+<ion-content class="conteudo-roteiro">
+  <div class="fundo" padding>
+    <ion-card>
+      <!-- <ion-card-content> -->
+        <ion-item>
+          Siga o roteiro abaixo:
+          <ion-badge slot="end" *ngIf="descricao?.roteiro" (click)="abrirDescr()">?</ion-badge>
+        </ion-item>
+        <!-- </ion-card-content> -->
+      </ion-card>
 
-  <ion-list padding class="lista-opcoes">
-    <button ion-item (click)="goItensPage('gratidao')">
-      <!-- <ion-icon name="ios-flower-outline" item-start></ion-icon> -->
-      <ion-avatar item-start>
-        <img src="assets/imgs/maos.png">
-      </ion-avatar>
-      Gratidão
-    </button>
-    <button ion-item (click)="goItensPage('paixao')" [disabled]="desPaixao">
-      <!-- <ion-icon name="heart-outline" item-start></ion-icon> -->
-      <ion-avatar item-start>
-        <img src="assets/imgs/coracao.png">
-      </ion-avatar>
-      Paixões
-    </button>
-    <button ion-item (click)="goItensPage('plano')" [disabled]="desPlano">
-      <!-- <ion-icon name="ios-create-outline" item-start></ion-icon> -->
-      <ion-avatar item-start>
-        <img src="assets/imgs/doc.png">
-      </ion-avatar>
-      Planos
-    </button>
-    <button ion-item (click)="goTextoPage('objetivo')" [disabled]="desObjetivo">
-      <!-- <ion-icon name="ios-disc-outline" item-start></ion-icon> -->
-      <ion-avatar item-start>
-        <img src="assets/imgs/alvo.png">
-      </ion-avatar>
-      Objetivo
-    </button>
-    <button ion-item (click)="goTextoPage('orgulho')" [disabled]="desOrgulho">
-      <!-- <ion-icon name="star-outline" item-start></ion-icon> -->
-      <ion-avatar item-start>
-        <img src="assets/imgs/estrela.png">
-      </ion-avatar>
-      Orgulho
-    </button>
-  </ion-list>
+      <ion-list padding class="lista-opcoes">
 
-  <ion-grid>
-    <ion-row>
-      <ion-col col-3></ion-col>
-      <ion-col col-6><button ion-button color="secondary" block (click)="goPalavraPage()" [disabled]="desPalavra">Palavra do Dia</button></ion-col>
-      <ion-col col-3></ion-col>
-    </ion-row>
-  </ion-grid>
+        <ion-item lines="none" (click)="goItensPage('gratidao')">
+          <ion-thumbnail slot="start">
+            <img src="assets/imgs/maos.png">
+          </ion-thumbnail>
+          <ion-label>
+            Gratidão
+          </ion-label>
+        </ion-item>
+
+        <ion-item lines="none" (click)="goItensPage('paixao')" [disabled]="desPaixao">
+          <ion-thumbnail slot="start">
+            <img src="assets/imgs/coracao.png">
+          </ion-thumbnail>
+          <ion-label>
+            Paixões
+          </ion-label>
+        </ion-item>
+
+        <ion-item lines="none" (click)="goItensPage('plano')" [disabled]="desPlano">
+          <ion-thumbnail slot="start">
+            <img src="assets/imgs/doc.png">
+          </ion-thumbnail>
+          <ion-label>
+            Planos
+          </ion-label>
+        </ion-item>
+
+        <ion-item lines="none" (click)="goTextoPage('objetivo')" [disabled]="desObjetivo">
+          <ion-thumbnail slot="start">
+            <img src="assets/imgs/alvo.png">
+          </ion-thumbnail>
+          <ion-label>
+            Objetivo
+          </ion-label>
+        </ion-item>
+
+        <ion-item lines="none" (click)="goTextoPage('orgulho')" [disabled]="desOrgulho">
+          <ion-thumbnail slot="start">
+            <img src="assets/imgs/estrela.png">
+          </ion-thumbnail>
+          <ion-label>
+            Orgulho
+          </ion-label>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-3></ion-col>
+          <ion-col col-6><ion-button color="secondary" block (click)="goPalavraPage()" [disabled]="desPalavra">Palavra do Dia</ion-button></ion-col>
+          <ion-col col-3></ion-col>
+        </ion-row>
+      </ion-grid>
+  </div>
 
 </ion-content>

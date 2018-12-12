@@ -4,11 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { ModalCalendarioPage } from './modal-calendario';
 
 @NgModule({
-  declarations: [
-    ModalCalendarioPage,
-  ],
-  imports: [
-    IonicModule
-  ]
+  declarations: [ModalCalendarioPage],
+  imports: [IonicModule]
 })
 export class ModalCalendarioPageModule {}

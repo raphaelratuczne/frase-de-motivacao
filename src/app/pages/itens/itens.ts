@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,6 +11,8 @@ import { Dia } from '../../models/dia';
 @Component({
   selector: 'page-itens',
   templateUrl: 'itens.html',
+  styleUrls: ['itens.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ItensPage {
 
@@ -28,7 +30,7 @@ export class ItensPage {
   ) {
     this.route.params.pipe(first()).subscribe(params => {
       this.page = params.page;
-      this.descricao = params.descr;
+      this.descricao = atob(params.descr);
 
       if (!this.page) {
         this.router.navigateByUrl('roteiro');
