@@ -1,17 +1,29 @@
 page-texto {
 
-  ion-content {
-    background-size: cover;
-    background-image: url('assets/imgs/amor-em-estampa-1.jpeg');
+  .conteudo-texto {
+    .fundo {
+      height: 100%;
+      background: url('../../../assets/imgs/amor-em-estampa-1.jpeg') center;
+      background-size: contain;
 
-    .item-textearea {
-      border-radius: 10px!important;
+      .lista-input {
+        background-color: transparent!important;
+
+        .item-textearea {
+          --border-radius: 10px;
+          --highlight-color-focused: transparent;
+          --padding-top: 8px;
+          --padding-bottom: 8px;
+          --padding-start: 10px;
+          --padding-end: 5px;
+        }
+      }
     }
   }
 
-  ion-label {
-    text-overflow: unset;
-    white-space: normal;
-  }
+  // ion-label {
+  //   text-overflow: unset;
+  //   white-space: normal;
+  // }
 
 }

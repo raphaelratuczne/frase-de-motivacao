@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'roteiro', loadChildren: './pages/roteiro/roteiro.module#RoteiroPageModule' },
   { path: 'itens/:page/:descr', loadChildren: './pages/itens/itens.module#ItensPageModule' },
   { path: 'texto/:page/:descr', loadChildren: './pages/texto/texto.module#TextoPageModule' },
-  { path: 'palavra/:descr/:alerta', loadChildren: './pages/palavra/palavra.module#PalavraPageModule' },
+  { path: 'palavra', loadChildren: './pages/palavra/palavra.module#PalavraPageModule' },
 ];
 
 @NgModule({

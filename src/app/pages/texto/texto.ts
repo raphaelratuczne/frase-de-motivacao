@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,6 +11,8 @@ import { Dia } from '../../models/dia';
 @Component({
   selector: 'page-texto',
   templateUrl: 'texto.html',
+  styleUrls: ['texto.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TextoPage {
 
@@ -40,8 +42,7 @@ export class TextoPage {
     });
   }
 
-  ionViewDidLoad() {
-    // console.log('ionViewDidLoad TextoPage');
+  ionViewWillEnter() {
     this.diaProvider.getDocDadosDia().pipe(first()).subscribe(dados => {
       this.dia = dados;
       switch(this.page) {

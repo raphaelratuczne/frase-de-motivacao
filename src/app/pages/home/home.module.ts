@@ -10,6 +10,7 @@ import { ModalCalendarioPageModule } from './modal-calendario/modal-calendario.m
 import { ModalCalendarioPage } from './modal-calendario/modal-calendario';
 import { ModalDiaPageModule } from './modal-dia/modal-dia.module';
 import { MenuPageModule } from './menu/menu.module';
+import { MenuPage } from './menu/menu';
 
 @NgModule({
   imports: [
@@ -29,6 +30,6 @@ import { MenuPageModule } from './menu/menu.module';
   ],
   declarations: [HomePage],
   providers: [SocialSharing],
-  entryComponents: [ModalCalendarioPage]
+  entryComponents: [ModalCalendarioPage, MenuPage]
 })
 export class HomePageModule {}

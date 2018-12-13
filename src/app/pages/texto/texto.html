@@ -9,37 +9,31 @@
 
 </ion-header>
 
-<ion-content padding>
-
-  <!-- <div padding>
-    <h2>{{ getText() }}</h2>
-  </div> -->
-
-  <ion-card>
-    <!-- <ion-card-content> -->
+<ion-content class="conteudo-texto">
+  <div class="fundo" padding>
+    <ion-card>
       <ion-item>
         {{ getText() }}
-        <ion-badge *ngIf="descricao" item-end (click)="abrirDescr()">?</ion-badge>
+        <ion-badge  slot="end" *ngIf="descricao" item-end (click)="abrirDescr()">?</ion-badge>
       </ion-item>
-    <!-- </ion-card-content> -->
-  </ion-card>
+    </ion-card>
 
-  <form *ngIf="form" [formGroup]="form" (ngSubmit)="salvar()">
-    <ion-list inset>
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="salvar()">
+      <ion-list inset class="lista-input">
 
-      <ion-item class="item-textearea">
-        <ion-textarea formControlName="texto" autofocus></ion-textarea>
-      </ion-item>
+        <ion-item class="item-textearea">
+          <ion-textarea formControlName="texto" autofocus></ion-textarea>
+        </ion-item>
 
-    </ion-list>
+      </ion-list>
 
-    <ion-grid>
-      <ion-row>
-        <ion-col col-3></ion-col>
-        <ion-col col-6><button type="submit" color="secondary" ion-button block>Salvar</button></ion-col>
-        <ion-col col-3></ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
-
+      <ion-grid>
+        <ion-row>
+          <ion-col col-3></ion-col>
+          <ion-col col-6><ion-button type="submit" color="secondary" block>Salvar</ion-button></ion-col>
+          <ion-col col-3></ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
 </ion-content>

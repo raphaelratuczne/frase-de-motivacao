@@ -18,9 +18,8 @@
   font-style: normal;
 }
 
-ion-content,
-ion-header {
-  font-family: 'rodona';
+:root {
+  --ion-font-family: 'rodona';
 }
 
 .card {

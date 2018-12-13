@@ -2,12 +2,9 @@ page-roteiro {
 
   .conteudo-roteiro {
     .fundo {
-      height: 100%;
-      background: url('../../../assets/imgs/amor-em-estampa-2.jpg') center;
-      background-size: contain;
 
       ion-card {
-        margin: 26px auto !important;
+        margin: 24px auto !important;
       }
 
       .lista-opcoes {
@@ -23,6 +20,10 @@ page-roteiro {
           }
         }
       }
+
+      height: 100%;
+      background: url('../../../assets/imgs/amor-em-estampa-2.jpg') no-repeat fixed center;
+      background-size: contain;
     }
   }
 

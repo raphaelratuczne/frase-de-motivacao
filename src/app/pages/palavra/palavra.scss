@@ -1,20 +1,46 @@
 page-palavra {
 
-  ion-content {
-    background-size: cover;
-    background-image: url('assets/imgs/amor-em-estampa-3.jpg');
+  .conteudo-palavra {
+    .fundo {
+      // height: 100%;
+      background: url('../../../assets/imgs/amor-em-estampa-3.jpg') center;
+      background-size: cover;
 
-    .border-r {
-      border-radius: 10px!important;
+      ion-card {
+        --ion-box-shadow-color: transparent;
+        --box-shadow: none;
+        box-shadow: none;
+      }
+
+      ion-list {
+        background-color: transparent!important;
+      }
+
+      .item-palavra, ion-item {
+        --highlight-color-focused: transparent;
+        --border-color: transparent;
+      }
+
+      .border-r {
+        --border-radius: 10px;
+        border-radius: 10px!important;
+        background-color: white;
+      }
+
+      ion-badge {
+        z-index: 10;
+      }
+
+      ion-label {
+        text-overflow: unset;
+        white-space: normal;
+      }
+
     }
   }
-
-  ion-label {
-    text-overflow: unset;
-    white-space: normal;
-  }
-
-  ion-badge {
-    z-index: 10;
-  }
+  // ion-content {
+  //
+  // }
+  //
+  //
 }

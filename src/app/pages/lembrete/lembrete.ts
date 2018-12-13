@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -10,6 +10,8 @@ import { Dia } from '../../models/dia';
 @Component({
   selector: 'page-lembrete',
   templateUrl: 'lembrete.html',
+  styleUrls: ['lembrete.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LembretePage {
 
@@ -18,8 +20,7 @@ export class LembretePage {
 
   constructor(private router: Router, private diaProvider: DiaProvider) { }
 
-  ionViewDidLoad() {
-    // console.log('ionViewDidLoad LembretePage');
+  ionViewWillEnter() {
     this.d$ = new Subject();
     this.diaProvider.getDocDadosDia().pipe(takeUntil(this.d$)).subscribe(dados => {
       if (dados) {

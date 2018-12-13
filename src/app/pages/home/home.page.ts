@@ -114,7 +114,7 @@ export class HomePage implements OnInit, OnDestroy {
         translucent: false
       });
       popover.onDidDismiss().then(async op => {
-        if (op && op == 'sair') {
+        if (op && op.data == 'sair') {
           const confirm = await this.alertCtrl.create({
             header: 'Deslogar?',
             message: 'Tem certeza que deseja deslogar do Minha Terapia?',

@@ -64,7 +64,7 @@ export class RoteiroPage implements OnDestroy {
   }
 
   public goPalavraPage() {
-    this.router.navigateByUrl(`palavra/${this.descricao.palavra}/${this.descricao.alerta}`);
+    this.router.navigateByUrl('palavra');
   }
 
   public goHome() {

@@ -44,8 +44,7 @@ export class ItensPage {
     });
   }
 
-  ionViewDidLoad() {
-    // console.log('ionViewDidLoad ItensPage', this.page);
+  ionViewWillEnter() {
     this.diaProvider.getDocDadosDia().pipe(first()).subscribe(dados => {
       this.dia = dados;
       switch(this.page) {
