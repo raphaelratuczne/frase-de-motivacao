@@ -17,6 +17,22 @@ export class LocalNotificationProvider {
         if (!present) {
           cordova.plugins.notification.local.schedule(this.criarAlertaUsarApp());
         }
+        cordova.plugins.notification.local.schedule([
+          {
+            title: 'Minha Terapia',
+            text: 'Lembrete da sua palavra: Carol',
+            trigger: {
+              at: new Date( new Date().getTime() + (1000 * 10) )
+            }
+          },
+          {
+            title: 'Minha Terapia',
+            text: 'Novo Lembrete da sua palavra: Carol',
+            trigger: {
+              at: new Date( new Date().getTime() + (1000 * 30) )
+            }
+          }
+        ]);
       });
     }
   }
