@@ -1,90 +1,71 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { NavParams, ModalController } from '@ionic/angular';
 
 import { ModalDiaPage } from '../modal-dia/modal-dia';
 
-import * as moment from 'moment';
-import 'moment/locale/pt-br';
+import { todayDateToString } from '../../../functions/today-date-to-string';
 
 @Component({
   selector: 'page-modal-calendario',
   templateUrl: 'modal-calendario.html',
+  styleUrls: ['modal-calendario.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ModalCalendarioPage {
 
-  // public pronto = false;
-  // private primeiroDia: Date;
-  date: string;
-  type: 'string'; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
-  options;/*: CalendarComponentOptions; = {
-    from: new Date((new Date('2018-09-12').getTime()) + (new Date().getTimezoneOffset() * 60 * 1000)),
-    to: new Date(),
-    monthPickerFormat: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-    weekdays: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
-    color: 'secondary'
-    // daysConfig:[{
-    //   date: new Date( new Date().getTime() - (5*24*60*60*1000) ),
-    //   marked: true
-    // },{
-    //   date: new Date( new Date().getTime() - (6*24*60*60*1000) ),
-    //   disable: true
-    // }],
-    // monthFormat: 'MMM YYYY'
-  };*/
+  br: any = {
+    firstDayOfWeek: 0,
+    dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+    dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+    dayNamesMin: ['D','S','T','Q','Q','S','S'],
+    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+    today: 'Hoje',
+    clear: 'Limpar'
+  };
+
   dias: string[];
+
+  value: Date;
+  minDateValue: Date;
+  maxDateValue: Date;
+  invalidDates: Date[];
 
   constructor(
     //private navCtrl: NavController,
-    private navParams: NavParams,
     // private viewCtrl: ViewController,
+    private navParams: NavParams,
     private modalCtrl: ModalController
   ) {
     this.dias = this.navParams.get('dias');
-    console.log('dias', this.dias);
+    // console.log('dias', this.dias);
 
-    moment.locale('pt-br');
+    this.minDateValue = new Date(this.dias[0] + 'T00:00');
+    this.maxDateValue = new Date( this.dias[ this.dias.length - 1 ] + 'T00:00' );
+    this.invalidDates = [];
 
-    // cria um Date a partir da data passada
-    const setDia = dia => new Date((new Date(dia).getTime()) + (new Date().getTimezoneOffset() * 60 * 1000));
-
-    const primeiroDia = setDia(this.dias[0]);
-    console.log('primeiroDia1', primeiroDia);
-    // this.options.from = primeiroDia;
-    this.options = {
-      from: setDia(this.dias[0]),
-      to: new Date(),
-      monthPickerFormat: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-      weekdays: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
-      color: 'secondary',
-      monthFormat: 'MMMM YYYY',
-      daysConfig: []
-    };
-
-    // this.options.daysConfig = [];
-    for (let d = primeiroDia; d <= new Date(); d.setTime( d.getTime() + (24*60*60*1000) ) ) {
-      this.options.daysConfig.push({
-        date: new Date(d),
-        marked: this.dias.some(dia => setDia(dia).getTime() == d.getTime()),
-        disable: !this.dias.some(dia => setDia(dia).getTime() == d.getTime())
-      });
+    for (let d = new Date(this.minDateValue), df = new Date(this.maxDateValue); d < df; d = new Date(d.getTime()+ (24*60*60*1000))) {
+      // const dia = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).substr(-2) + '-' + ('0' + d.getDate()).substr(-2);
+      const dia = todayDateToString(d);
+      if (!this.dias.includes(dia)) {
+        this.invalidDates.push(new Date(d));
+      }
     }
+
   }
 
-  ionViewDidLoad() {
-    // console.log('ionViewDidLoad ModalCalendarioPage');
-    // this.pronto = true;
-    // console.log('primeiroDia2', this.primeiroDia);
-    // this.options.from = new Date((new Date('2018-09-12').getTime()) + (new Date().getTimezoneOffset() * 60 * 1000));
-    // this.options.from =  new Date((new Date(this.dias[0]).getTime()) + (new Date().getTimezoneOffset() * 60 * 1000));
+  ionViewWillEnter() {
+
   }
 
   public async onChange($event) {
     // console.log($event);
     const modal = await this.modalCtrl.create({
       component: ModalDiaPage,
-      componentProps: { dia:$event }
+      componentProps: { dia: todayDateToString($event) }
     });
     return await modal.present();
+
     // let modalDia = this.modalCtrl.create('ModalDiaPage', {dia:$event});
     // modalDia.onDidDismiss(data => {
     //   console.log(data);

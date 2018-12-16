@@ -9,6 +9,7 @@ import { HomePage } from './home.page';
 import { ModalCalendarioPageModule } from './modal-calendario/modal-calendario.module';
 import { ModalCalendarioPage } from './modal-calendario/modal-calendario';
 import { ModalDiaPageModule } from './modal-dia/modal-dia.module';
+import { ModalDiaPage } from './modal-dia/modal-dia';
 import { MenuPageModule } from './menu/menu.module';
 import { MenuPage } from './menu/menu';
 
@@ -30,6 +31,10 @@ import { MenuPage } from './menu/menu';
   ],
   declarations: [HomePage],
   providers: [SocialSharing],
-  entryComponents: [ModalCalendarioPage, MenuPage]
+  entryComponents: [
+    ModalCalendarioPage,
+    ModalDiaPage,
+    MenuPage
+  ]
 })
 export class HomePageModule {}

@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-toolbar color="primary">
-    <ion-buttons  slot="start">
+    <ion-buttons slot="start">
       <ion-button (click)="fechar()">
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
@@ -13,18 +13,29 @@
 </ion-header>
 
 
-<ion-content padding>
-  <!-- <p>modal calendario</p> -->
-  <!-- <div *ngIf="pronto"> -->
-    <!-- <ion-calendar [(ngModel)]="date"
-                  [options]="options"
-                  (onSelect)="onChange($event)"
-                  [type]="type"
-                  [format]="'YYYY-MM-DD'">
-    </ion-calendar> -->
-  <!-- </div> -->
-
-  <ion-item>
-    <ion-button item-end name="button" (click)="fechar()" color="secondary">fechar</ion-button>
-  </ion-item>
+<ion-content class="conteudo-calendario">
+  <div class="fundo">
+    <p-calendar
+      [(ngModel)]="value"
+      [inline]="true"
+      [locale]="br"
+      dateFormat="yy-mm-dd"
+      [minDate]="minDateValue"
+      [maxDate]="maxDateValue"
+      [disabledDates]="invalidDates"
+      (onSelect)="onChange($event)"
+      [touchUI]="true">
+    </p-calendar>
+  </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="secondary" size="small" fill="solid" (click)="fechar()">
+        <ion-icon name="arrow-back"></ion-icon>
+        Fechar
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

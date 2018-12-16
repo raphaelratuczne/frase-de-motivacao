@@ -1,48 +1,54 @@
 <ion-header>
-
   <ion-toolbar color="primary">
-    <ion-buttons left>
-      <button ion-button icon-only (click)="fechar()">
-        <ion-icon name="arrow-back"></ion-icon>
-      </button>
+    <ion-buttons slot="start">
+      <ion-button (click)="fechar()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>Dia {{ converterDia(hoje) }}</ion-title>
   </ion-toolbar>
-
 </ion-header>
 
-<ion-content padding>
+<ion-content class="conteudo-dia">
+  <div class="fundo" padding>
+    <dl *ngIf="dia">
+      <dt>Frse do dia</dt>
+      <dd>{{ dia.frase }}</dd>
 
-  <dl *ngIf="dia | async as d">
-    <dt>Frse do dia</dt>
-    <dd>{{ d.frase }}</dd>
+      <dt>Gratidão</dt>
+      <dd>{{ dia.grato1 }}</dd>
+      <dd>{{ dia.grato2 }}</dd>
+      <dd>{{ dia.grato3 }}</dd>
 
-    <dt>Gratidão</dt>
-    <dd>{{ d.grato1 }}</dd>
-    <dd>{{ d.grato2 }}</dd>
-    <dd>{{ d.grato3 }}</dd>
+      <dt>Paixões</dt>
+      <dd>{{ dia.paixao1 }}</dd>
+      <dd>{{ dia.paixao2 }}</dd>
+      <dd>{{ dia.paixao3 }}</dd>
 
-    <dt>Paixões</dt>
-    <dd>{{ d.paixao1 }}</dd>
-    <dd>{{ d.paixao2 }}</dd>
-    <dd>{{ d.paixao3 }}</dd>
+      <dt>Planos</dt>
+      <dd>{{ dia.plano1 }}</dd>
+      <dd>{{ dia.plano2 }}</dd>
+      <dd>{{ dia.plano3 }}</dd>
 
-    <dt>Planos</dt>
-    <dd>{{ d.plano1 }}</dd>
-    <dd>{{ d.plano2 }}</dd>
-    <dd>{{ d.plano3 }}</dd>
+      <dt>Objetivo</dt>
+      <dd>{{ dia.objetivo }}</dd>
 
-    <dt>Objetivo</dt>
-    <dd>{{ d.objetivo }}</dd>
+      <dt>Orgulho</dt>
+      <dd>{{ dia.orgulho }}</dd>
 
-    <dt>Orgulho</dt>
-    <dd>{{ d.orgulho }}</dd>
-
-    <dt>Palavra do dia</dt>
-    <dd>{{ d.palavra }}</dd>
-  </dl>
-
-  <ion-item>
-    <button ion-button item-end name="button" (click)="fechar()" color="secondary">fechar</button>
-  </ion-item>
+      <dt>Palavra do dia</dt>
+      <dd>{{ dia.palavra }}</dd>
+    </dl>
+  </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="secondary" size="small" fill="solid" (click)="fechar()">
+        <ion-icon name="arrow-back"></ion-icon>
+        Fechar
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

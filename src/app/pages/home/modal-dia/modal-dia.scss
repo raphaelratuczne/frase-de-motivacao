@@ -1,14 +1,10 @@
 page-modal-dia {
-  ion-content {
-    background-size: cover;
-    background-image: url('assets/imgs/amor-em-estampa-1.jpeg');
+  .conteudo-dia {
+    .fundo {
+      height: 100%;
+      background: url('../../../../assets/imgs/amor-em-estampa-1.jpeg') center;
+      background-size: cover;
+    }
   }
 
-  .item-md {
-    background-color: transparent;
-  }
-
-  .item-md.item-block .item-inner {
-    border-bottom: none;
-  }
 }
