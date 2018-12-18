@@ -79,8 +79,8 @@
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
     <universal-links>
-        <host name="minha.terapia,app" scheme="https" />
-        <host name="com.raphaelratuczne.motivacaoapp" scheme="https">
+        <host name="https://motivacaoapp.page.link" scheme="https" />
+        <host name="motivacao-60f55.firebaseapp.com" scheme="https">
             <path url="/__/auth/callback" />
         </host>
     </universal-links>
@@ -97,11 +97,11 @@
     </plugin>
     <plugin name="cordova-plugin-screen-orientation" spec="^3.0.1" />
     <plugin name="cordova-plugin-local-notification" spec="^0.9.0-beta.2" />
-    <plugin name="cordova-plugin-buildinfo" spec="2.0.2" />
-    <plugin name="cordova-universal-links-plugin" spec="~1.2.1" />
-    <plugin name="cordova-plugin-browsertab" spec="0.2.0" />
-    <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
-    <plugin name="cordova-plugin-customurlscheme" spec="4.3.0">
+    <plugin name="cordova-plugin-buildinfo" spec="^2.0.2" />
+    <plugin name="cordova-universal-links-plugin" spec="^1.2.1" />
+    <plugin name="cordova-plugin-browsertab" spec="^0.2.0" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
+    <plugin name="cordova-plugin-customurlscheme" spec="^4.3.0">
         <variable name="URL_SCHEME" value="com.raphaelratuczne.motivacaoapp" />
         <variable name="ANDROID_SCHEME" value=" " />
         <variable name="ANDROID_HOST" value=" " />

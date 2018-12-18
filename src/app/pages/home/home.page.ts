@@ -79,11 +79,17 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   private oauthSignIn(provider) {
-		if (!(<any>window).cordova) {
-			this.afAuth.auth.signInWithPopup(provider)
-		} else {
-			this.afAuth.auth.signInWithRedirect(provider);
-		}
+		// if (!(<any>window).cordova) {
+			// this.afAuth.auth.signInWithPopup(provider);
+		// } else {
+			this.afAuth.auth.signInWithRedirect(provider).then(() => {
+        return this.afAuth.auth.getRedirectResult()
+      }).then(result => {
+        console.log('result', result);
+      }).catch(error => {
+        console.log('error', error);
+      });
+		// }
 	}
 
   public setFraseDoDia(excluidos:number[]) {
