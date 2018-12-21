@@ -82,6 +82,7 @@ export class HomePage implements OnInit, OnDestroy {
 		// if (!(<any>window).cordova) {
 			// this.afAuth.auth.signInWithPopup(provider);
 		// } else {
+    console.log('provider', provider);
 			this.afAuth.auth.signInWithRedirect(provider).then(() => {
         return this.afAuth.auth.getRedirectResult()
       }).then(result => {

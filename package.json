@@ -88,9 +88,6 @@
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {
-        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
-      },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-x-socialsharing": {
         "ANDROID_SUPPORT_V4_VERSION": "24.1.1+"
@@ -106,6 +103,9 @@
         "ANDROID_SCHEME": " ",
         "ANDROID_HOST": " ",
         "ANDROID_PATHPREFIX": "/"
+      },
+      "cordova-plugin-ionic-webview": {
+        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       }
     },
     "platforms": [
