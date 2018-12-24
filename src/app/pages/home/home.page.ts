@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { ModalController, PopoverController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase';
 import { Subject } from 'rxjs';
 import { takeUntil, first } from 'rxjs/Operators';
-import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 import { DiaProvider } from '../../services/dia.provider';
 import { FraseProvider } from '../../services/frase.provider';
@@ -36,7 +37,8 @@ export class HomePage implements OnInit, OnDestroy {
     private alertCtrl: AlertController,
     // public actionSheetCtrl: ActionSheetController,
     private socialSharing: SocialSharing,
-    private localNotificationProvider: LocalNotificationProvider
+    private localNotificationProvider: LocalNotificationProvider,
+    private googlePlus: GooglePlus
   ) { }
 
   ngOnInit() {
@@ -79,18 +81,26 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   private oauthSignIn(provider) {
+    if (provider) {}
 		// if (!(<any>window).cordova) {
 			// this.afAuth.auth.signInWithPopup(provider);
 		// } else {
-    console.log('provider', provider);
-			this.afAuth.auth.signInWithRedirect(provider).then(() => {
-        return this.afAuth.auth.getRedirectResult()
-      }).then(result => {
-        console.log('result', result);
-      }).catch(error => {
-        console.log('error', error);
-      });
+    // console.log('provider', provider);
+		// 	this.afAuth.auth.signInWithRedirect(provider).then(() => {
+    //     return this.afAuth.auth.getRedirectResult()
+    //   }).then(result => {
+    //     console.log('result', result);
+    //   }).catch(error => {
+    //     console.log('error', error);
+    //   });
 		// }
+    this.googlePlus.login({
+      scopes: ['profile', 'email'],
+      webClientId: '24026962670-b53aovibaseqno9v1g2m9pd5gjduq69s.apps.googleusercontent.com',
+      offline: true
+    })
+      .then(res => console.log('logou', res))
+      .catch(err => console.error('deu merda', err));
 	}
 
   public setFraseDoDia(excluidos:number[]) {

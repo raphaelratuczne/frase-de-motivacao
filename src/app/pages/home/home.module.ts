@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 // import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 import { HomePage } from './home.page';
 import { ModalCalendarioPageModule } from './modal-calendario/modal-calendario.module';
@@ -30,7 +31,10 @@ import { MenuPage } from './menu/menu';
     MenuPageModule
   ],
   declarations: [HomePage],
-  providers: [SocialSharing],
+  providers: [
+    SocialSharing,
+    GooglePlus
+  ],
   entryComponents: [
     ModalCalendarioPage,
     ModalDiaPage,

@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "24026962670",
+    "firebase_url": "https://motivacao-60f55.firebaseio.com",
+    "project_id": "motivacao-60f55",
+    "storage_bucket": "motivacao-60f55.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24026962670:android:8888d91ff0a54a73",
+        "android_client_info": {
+          "package_name": "com.raphaelratuczne.motivacaoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24026962670-3e5qau5vtsjmbmocg4r8u3aar8bcf57m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.raphaelratuczne.motivacaoapp",
+            "certificate_hash": "02fb5c3bafa4549c2515f13eb3b50e04dc64f7ea"
+          }
+        },
+        {
+          "client_id": "24026962670-3ea7f6tkek44h7a8tb0rm2laekr087m8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.raphaelratuczne.motivacaoapp",
+            "certificate_hash": "9696f580304c201161bacea28a69044301c713ae"
+          }
+        },
+        {
+          "client_id": "24026962670-b53aovibaseqno9v1g2m9pd5gjduq69s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLgUGFwTfFEOfuDBOTouEMRQYTZTCG218"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24026962670-b53aovibaseqno9v1g2m9pd5gjduq69s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
