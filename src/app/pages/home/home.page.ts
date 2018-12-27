@@ -83,7 +83,7 @@ export class HomePage implements OnInit, OnDestroy {
   private oauthSignIn(provider) {
     if (provider) {}
 		// if (!(<any>window).cordova) {
-			// this.afAuth.auth.signInWithPopup(provider);
+		// 	this.afAuth.auth.signInWithPopup(provider);
 		// } else {
     // console.log('provider', provider);
 		// 	this.afAuth.auth.signInWithRedirect(provider).then(() => {
@@ -95,7 +95,7 @@ export class HomePage implements OnInit, OnDestroy {
     //   });
 		// }
     this.googlePlus.login({
-      scopes: ['profile', 'email'],
+      scopes: 'EMAIL PLUS_LOGIN',
       webClientId: '24026962670-b53aovibaseqno9v1g2m9pd5gjduq69s.apps.googleusercontent.com',
       offline: true
     })

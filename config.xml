@@ -79,7 +79,7 @@
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
     <universal-links>
-        <host name="https://motivacaoapp.page.link/y6N7" scheme="https" />
+        <host name="https://motivacaoapp.page.link" scheme="https" />
         <host name="motivacao-60f55.firebaseapp.com" scheme="https">
             <path url="/__/auth/callback" />
         </host>
@@ -108,7 +108,8 @@
         <variable name="ANDROID_SUPPORT_ANNOTATIONS_VERSION" value="27.+" />
     </plugin>
     <plugin name="cordova-plugin-googleplus" spec="6.0.0">
-        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.24026962670-vdc4qe8u3ug22r38644brif4ke5j5r10" />
+        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.24026962670-b53aovibaseqno9v1g2m9pd5gjduq69s" />
+        <variable name="WEB_APPLICATION_CLIENT_ID" value="24026962670-b53aovibaseqno9v1g2m9pd5gjduq69s.apps.googleusercontent.com" />
         <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
     </plugin>
     <engine name="android" spec="7.0.0" />
