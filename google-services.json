@@ -31,6 +31,14 @@
           }
         },
         {
+          "client_id": "24026962670-peg75vktj8o9vd52nlghc9dh0rom6s2k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.raphaelratuczne.motivacaoapp",
+            "certificate_hash": "75eb4ad9c863e00850c7d555b6c2084d2e69c5d1"
+          }
+        },
+        {
           "client_id": "24026962670-b53aovibaseqno9v1g2m9pd5gjduq69s.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -50,6 +58,13 @@
             {
               "client_id": "24026962670-b53aovibaseqno9v1g2m9pd5gjduq69s.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "24026962670-vdc4qe8u3ug22r38644brif4ke5j5r10.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.raphaelratuczne.motivacaoapp"
+              }
             }
           ]
         },

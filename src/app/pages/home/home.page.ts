@@ -95,8 +95,8 @@ export class HomePage implements OnInit, OnDestroy {
     //   });
 		// }
     this.googlePlus.login({
-      scopes: 'EMAIL PLUS_LOGIN',
-      webClientId: '24026962670-b53aovibaseqno9v1g2m9pd5gjduq69s.apps.googleusercontent.com',
+      scopes: 'EMAIL PLUS_LOGIN PROFILE',
+      webClientId: '24026962670-peg75vktj8o9vd52nlghc9dh0rom6s2k.apps.googleusercontent.com',
       offline: true
     })
       .then(res => console.log('logou', res))

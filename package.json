@@ -110,8 +110,8 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-googleplus": {
-        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.24026962670-b53aovibaseqno9v1g2m9pd5gjduq69s",
-        "WEB_APPLICATION_CLIENT_ID": "24026962670-b53aovibaseqno9v1g2m9pd5gjduq69s.apps.googleusercontent.com",
+        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.24026962670-peg75vktj8o9vd52nlghc9dh0rom6s2k",
+        "WEB_APPLICATION_CLIENT_ID": "24026962670-peg75vktj8o9vd52nlghc9dh0rom6s2k.apps.googleusercontent.com",
         "PLAY_SERVICES_VERSION": "11.8.0"
       }
     },
