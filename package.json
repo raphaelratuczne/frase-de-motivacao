@@ -30,23 +30,23 @@
         "@ionic-native/status-bar": "~4.11.0",
         "@ionic/storage": "2.1.3",
         "angularfire2": "^5.0.0-rc.12",
-        "cordova-android": "^6.2.3",
+        "cordova-android": "6.2.3",
         "cordova-plugin-app-event": "^1.2.1",
         "cordova-plugin-browsertab": "^0.2.0",
         "cordova-plugin-buildinfo": "^2.0.2",
-        "cordova-plugin-compat": "^1.0.0",
+        "cordova-plugin-compat": "^1.2.0",
         "cordova-plugin-customurlscheme": "^4.3.0",
         "cordova-plugin-device": "^2.0.2",
         "cordova-plugin-inappbrowser": "^3.0.0",
-        "cordova-plugin-ionic-keyboard": "^2.1.2",
-        "cordova-plugin-ionic-webview": "^2.1.4",
+        "cordova-plugin-ionic-keyboard": "^2.1.3",
+        "cordova-plugin-ionic-webview": "^2.3.1",
         "cordova-plugin-screen-orientation": "^3.0.1",
         "cordova-plugin-splashscreen": "^5.0.2",
         "cordova-plugin-whitelist": "^1.3.3",
-        "cordova-plugin-x-socialsharing": "^5.4.1",
+        "cordova-plugin-x-socialsharing": "^5.4.4",
         "cordova-universal-links-plugin": "^1.2.1",
         "de.appplant.cordova.plugin.local-notification": "^0.8.5",
-        "es6-promise-plugin": "^4.1.0",
+        "es6-promise-plugin": "^4.2.2",
         "firebase": "^5.4.2",
         "intl": "^1.2.5",
         "ion2-calendar": "^2.2.0",
@@ -60,7 +60,7 @@
         "zone.js": "0.8.26"
     },
     "devDependencies": {
-        "@ionic/app-scripts": "^3.2.1",
+        "@ionic/app-scripts": "3.2.1",
         "typescript": "~2.6.2"
     },
     "description": "An Ionic project",
@@ -102,7 +102,9 @@
                 "DEEPLINK_5_SCHEME": " ",
                 "DEEPLINK_5_HOST": " "
             },
-            "cordova-plugin-x-socialsharing": {}
+            "cordova-plugin-x-socialsharing": {
+                "ANDROID_SUPPORT_V4_VERSION": "24.1.1+"
+            }
         },
         "platforms": [
             "android"

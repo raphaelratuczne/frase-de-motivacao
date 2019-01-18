@@ -122,5 +122,5 @@
         <variable name="DEEPLINK_5_SCHEME" value=" " />
         <variable name="DEEPLINK_5_HOST" value=" " />
     </plugin>
-    <engine name="android" spec="^6.2.3" />
+    <engine name="android" spec="~6.2.3" />
 </widget>
